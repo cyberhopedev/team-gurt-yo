@@ -5,9 +5,7 @@ using System.Collections.Generic;
 public class BattleEncounterManager : MonoBehaviour
 {
     // Scene where the battle occurs
-    public const string battleScene = "BattleScene";
-    // List of enemies in the encounter (to be managed in Unity Editor)
-    public List<GameObject> enemies;
+    public const string battleScene = "BattleEncounterScene";
     // Prevents the encounter from triggering more than once
     private bool _triggered = false;
 
@@ -18,6 +16,14 @@ public class BattleEncounterManager : MonoBehaviour
     /// <param name="c">The collider the overworld player triggers</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(_triggered || !collision.CompareTag("Player"))
+        {
+            return;
+        }
+
+        _triggered = true;
+        Debug.Log("Encounter triggered!");
+        Debug.Log("Loading battle scene...");
+        SceneManager.LoadScene(battleScene);
     }
 }

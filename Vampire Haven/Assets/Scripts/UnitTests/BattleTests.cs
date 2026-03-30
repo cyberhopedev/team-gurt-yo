@@ -32,7 +32,7 @@ public class BattleTests
 
         // Take enough damage to die and ensure that the system knows it's dead
         player.TakeDamage(100);
-        Assert.IsTrue(enemy.IsDead());
+        Assert.IsTrue(player.IsDead());
     }
     
     /// <summary>

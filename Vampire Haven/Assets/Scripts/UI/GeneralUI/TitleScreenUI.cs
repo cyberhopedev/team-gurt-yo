@@ -30,7 +30,6 @@ public class TitleScreenUI : MonoBehaviour
     {
         // Hide stuff
         setSaveName.SetActive(false);
-        noMoreSlots.SetActive(false);
     }
 
     /// <summary>
@@ -39,13 +38,8 @@ public class TitleScreenUI : MonoBehaviour
     /// </summary>
     public void OnNewGameButton()
     {
-        int slot = SaveManager.Instance.GetFirstEmptySlot();
-        if (slot == -1)
-        {
-            noMoreRoom.SetActive(true);
-            return;
-        }
-        setGameName.SetActive(true);
+        // TODO: Add slot functionality later, just looad into the game for now
+        SaveManager.Instance.NewGame(0, "Alpha Save");
     }
 
     /// <summary>
@@ -62,27 +56,5 @@ public class TitleScreenUI : MonoBehaviour
     public void OnExitButton ()
     {
         Application.Quit();
-    }
-
-    /// <summary>
-    /// Checks if a name input is not empty, gets the first empty slot from
-    /// SaveManager, creates a new game with the input name in that slot, and then loads the "BetaScene".
-    /// </summary>
-    public void OnSaveButton()
-    {
-        if (nameInput.text.Length > 0)
-        {
-            int slot = SaveManager.Instance.GetFirstEmptySlot();
-            SaveManager.Instance.NewGame(slot, nameInput.text);
-            SceneManager.LoadScene("SampleScene");
-        }
-    }
-
-    /// <summary>
-    /// Sets the active state of the noMoreRoom object to false.
-    /// </summary>
-    public void OnClosebutton()
-    {
-        noMoreSlots.SetActive(false);
     }
 }

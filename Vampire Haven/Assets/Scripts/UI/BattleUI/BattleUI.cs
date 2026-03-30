@@ -28,14 +28,21 @@ public class BattleUI : MonoBehaviour
 
     private void Start()
     {
+        battleManager = FindFirstObjectByType<BattleManager>();
+        // Hide if not in a battle
+        if (battleManager == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         // Get references
-        battleManager = FindObjectOfType<BattleManager>();
         player = battleManager.player;
         enemy = battleManager.enemy;
 
         // Setup buttons
         attackButton.onClick.AddListener(OnAttack);
-        fleeButton.onClick.AddListener(OnFlee);
+        escapeButton.onClick.AddListener(OnEscape);
 
         // Initialize UI
         UpdateHealthBars();
@@ -44,13 +51,19 @@ public class BattleUI : MonoBehaviour
 
     private void Update()
     {
+        // If we are not in the BattleEncounterScene, don't update
+        if (battleManager == null)
+        {
+            return;
+        }
+
         // Update UI every frame (simple for now for alpha)
         UpdateHealthBars();
         UpdateStateText();
 
         // Disable buttons when it's not player's turn
-        attackButton.interactable = (battleManager.state == BattleState.PLAYERTURN);
-        escapeButton.interactable = (battleManager.state == BattleState.PLAYERTURN);
+        attackButton.interactable = (battleManager.currentState == BattleState.PLAYERTURN);
+        escapeButton.interactable = (battleManager.currentState == BattleState.PLAYERTURN);
     }
 
     /// <summary>
@@ -73,7 +86,7 @@ public class BattleUI : MonoBehaviour
 
     private void UpdateHealthBars()
     {
-        playerHealthBar.maxValue = player.maxHP;
+        playerHealthBar.maxValue = player.data.maxHP;
         playerHealthBar.value = player.currentHP;
 
         enemyHealthBar.maxValue = enemy.maxHP;
@@ -82,7 +95,7 @@ public class BattleUI : MonoBehaviour
 
     private void UpdateStateText()
     {
-        switch (battleManager.state)
+        switch (battleManager.currentState)
         {
             case BattleState.PLAYERTURN:
                 stateText.text = "Player Turn";
@@ -95,6 +108,9 @@ public class BattleUI : MonoBehaviour
                 break;
             case BattleState.LOST:
                 stateText.text = "You Lose!";
+                break;
+            default:
+                stateText.text = "";
                 break;
         }
     }   
