@@ -55,7 +55,6 @@ public class TitleScreenUI : MonoBehaviour
     {
         LoadSaveUI.Instance.ShowMenu();
     }
-
     
     /// <summary>
     /// Closes the application when called.

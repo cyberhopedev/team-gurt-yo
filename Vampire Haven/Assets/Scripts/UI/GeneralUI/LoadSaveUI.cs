@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
 
+/// <summary>
+/// TODO: Work on loading save menu once saving functionality works in SaveManager.cs
+/// </summary>
 public class LoadSaveUI : MonoBehaviour
 {
     // Public instance of LoadSaveUI to be called by other classes
