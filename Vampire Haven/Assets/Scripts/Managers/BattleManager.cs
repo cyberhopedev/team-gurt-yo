@@ -5,9 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
-// State of the battle
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, FLED }
-
 /// <summary>
 /// Manages the flow of a battle between a player and an enemy in a game scene.
 /// </summary>
@@ -27,51 +24,49 @@ public class BattleManager : MonoBehaviour
 
     private void Start()
     {
-        state = BattleState.START;
-        enemy.Awake();
-        player.Awake();
+        currentState = BattleState.START;
         StartBattle();
     }
 
-        void StartBattle()
-        {
-            Debug.Log("Battle started!");
+    void StartBattle()
+    {
+        Debug.Log("Battle started!");
 
-            state = BattleState.PLAYERTURN;
-            PlayerTurn();
+        currentState = BattleState.PLAYERTURN;
+        PlayerTurn();
+    }
+
+    void PlayerTurn()
+    {
+        Debug.Log("Player Turn");
+    }
+
+    public void Attack()
+    {
+        if (currentState != BattleState.PLAYERTURN) return;
+
+        int damage = player.data.attackDamage;;
+        enemy.TakeDamage(damage);
+
+        Debug.Log("Player attacks for " + damage);
+
+        if (enemy.IsDead())
+        {
+            currentState = BattleState.WON;
+            EndBattle();
+            return;
         }
 
-        void PlayerTurn()
-        {
-            Debug.Log("Player Turn");
-        }
-
-        public void Attack()
-        {
-            if (state != BattleState.PLAYERTURN) return;
-
-            int damage = player.attackPower;
-            enemy.TakeDamage(damage);
-
-            Debug.Log("Player attacks for " + damage);
-
-            if (enemy.IsDead())
-            {
-                state = BattleState.WON;
-                EndBattle();
-                return;
-            }
-
-            state = BattleState.ENEMYTURN;
-            EnemyTurn();
-        }
+        currentState = BattleState.ENEMYTURN;
+        EnemyTurn();
+    }
 
     public void Escape()
     {
-        if (state != BattleState.PLAYERTURN) return;
+        if (currentState != BattleState.PLAYERTURN) return;
 
-        Debug.Log("Player fled!");
-        state = BattleState.FLED;
+        Debug.Log("Player escaped!");
+        currentState = BattleState.ESCAPED;
 
         SceneManager.LoadScene(overworldScene);
     }
@@ -87,22 +82,22 @@ public class BattleManager : MonoBehaviour
 
         if (player.IsDead())
         {
-            state = BattleState.LOST;
+            currentState = BattleState.LOST;
             EndBattle();
             return;
         }
 
-        state = BattleState.PLAYERTURN;
+        currentState = BattleState.PLAYERTURN;
         PlayerTurn();
     }
 
     void EndBattle()
     {
-        if (state == BattleState.WON)
+        if (currentState == BattleState.WON)
         {
             Debug.Log("You won!");
         }
-        else if (state == BattleState.LOST)
+        else if (currentState == BattleState.LOST)
         {
             Debug.Log("You lost...");
         }

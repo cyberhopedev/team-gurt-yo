@@ -24,13 +24,19 @@ public class BattleUI : MonoBehaviour
     // Actors needed
     private BattleManager battleManager;
     private PlayerBattler player;
-    private PlayerData playerData;
     private Enemy enemy;
 
     private void Start()
     {
+        battleManager = FindFirstObjectByType<BattleManager>();
+        // Hide if not in a battle
+        if (battleManager == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         // Get references
-        battleManager = FindObjectOfType<BattleManager>();
         player = battleManager.player;
         enemy = battleManager.enemy;
 
@@ -45,6 +51,12 @@ public class BattleUI : MonoBehaviour
 
     private void Update()
     {
+        // If we are not in the BattleEncounterScene, don't update
+        if (battleManager == null)
+        {
+            return;
+        }
+
         // Update UI every frame (simple for now for alpha)
         UpdateHealthBars();
         UpdateStateText();
@@ -96,6 +108,9 @@ public class BattleUI : MonoBehaviour
                 break;
             case BattleState.LOST:
                 stateText.text = "You Lose!";
+                break;
+            default:
+                stateText.text = "";
                 break;
         }
     }   
