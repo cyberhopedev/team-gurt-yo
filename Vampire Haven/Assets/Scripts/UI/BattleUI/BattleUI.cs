@@ -25,4 +25,29 @@ public class BattleUI : MonoBehaviour
     {
         
     }
+
+    private void ShowMenu()
+    {
+        
+    }
+
+    private void HideMenu()
+    {
+        
+    }
+
+    private void OnBattleStateChanged(BattleState state)
+    {
+        
+    }
+
+    private void OnAttackChosen(int choice)
+    {
+        
+    }
+
+    public void Escape()
+    {
+        
+    }
 }

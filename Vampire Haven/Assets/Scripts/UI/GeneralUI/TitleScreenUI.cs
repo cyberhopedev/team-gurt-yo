@@ -17,23 +17,20 @@ public class TitleScreenUI : MonoBehaviour
     GameObject setSaveName;
     // Pop up error if you try to start a new game with no more save slots
     [SerializeField]
-    GameObject noMoreRoom;
+    GameObject noMoreSlots;
 
     // Name of the save that can be edited in Unity editor
     [SerializeField]
     TMPro.TMP_InputField nameInput;
 
     /// <summary>
-    /// Calls the SettingsDoneButton method from the SettingsMenu instance and
-    /// hides two game objects.
+    /// Hides uneeded game objects
     /// </summary>
     private void Start()
     {
-        SettingsMenu.Instance.SettingsDoneButton();
-
         // Hide stuff
         setSaveName.SetActive(false);
-        noMoreRoom.SetActive(false);
+        noMoreSlots.SetActive(false);
     }
 
     /// <summary>
@@ -42,7 +39,7 @@ public class TitleScreenUI : MonoBehaviour
     /// </summary>
     public void OnNewGameButton()
     {
-        int slot = SaveController.Instance.GetFirstEmptySlot();
+        int slot = SaveManager.Instance.GetFirstEmptySlot();
         if (slot == -1)
         {
             noMoreRoom.SetActive(true);
@@ -52,21 +49,13 @@ public class TitleScreenUI : MonoBehaviour
     }
 
     /// <summary>
-    /// Calls the ShowMenu method of the LoadMenu.Instance.
+    /// Calls the ShowMenu method of the LoadSaveUI.Instance.
     /// </summary>
     public void OnContinueButton()
     {
-        LoadMenu.Instance.ShowMenu();
+        LoadSaveUI.Instance.ShowMenu();
     }
 
-    
-    /// <summary>
-    /// Calls the ShowMenu method of the SettingsMenu instance.
-    /// </summary>
-    public void OnSettingsButton()
-    {
-        SettingsMenu.Instance.ShowMenu();
-    }
     
     /// <summary>
     /// Closes the application when called.
@@ -78,15 +67,15 @@ public class TitleScreenUI : MonoBehaviour
 
     /// <summary>
     /// Checks if a name input is not empty, gets the first empty slot from
-    /// SaveController, creates a new game with the input name in that slot, and then loads the "BetaScene".
+    /// SaveManager, creates a new game with the input name in that slot, and then loads the "BetaScene".
     /// </summary>
     public void OnSaveButton()
     {
         if (nameInput.text.Length > 0)
         {
-            int slot = SaveController.Instance.GetFirstEmptySlot();
-            SaveController.Instance.NewGame(slot, nameInput.text);
-            SceneManager.LoadScene("BetaScene");
+            int slot = SaveManager.Instance.GetFirstEmptySlot();
+            SaveManager.Instance.NewGame(slot, nameInput.text);
+            SceneManager.LoadScene("SampleScene");
         }
     }
 
@@ -95,6 +84,6 @@ public class TitleScreenUI : MonoBehaviour
     /// </summary>
     public void OnClosebutton()
     {
-        noMoreRoom.SetActive(false);
+        noMoreSlots.SetActive(false);
     }
 }
