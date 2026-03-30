@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 394990307}
   - component: {fileID: 394990306}
   - component: {fileID: 394990305}
+  - component: {fileID: 394990309}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -240,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 2
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -296,6 +297,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &394990309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394990304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9cd5cb5e72cf242a91585174a2dab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TitleScreenUI
+  setSaveName: {fileID: 0}
+  noMoreSlots: {fileID: 0}
+  nameInput: {fileID: 0}
 --- !u!1 &646172043
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2265693319301704672, guid: 32da1b266f13d3c4f844d32d2a41a14c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

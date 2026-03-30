@@ -24,6 +24,7 @@ public class BattleUI : MonoBehaviour
     // Actors needed
     private BattleManager battleManager;
     private PlayerBattler player;
+    private PlayerData playerData;
     private Enemy enemy;
 
     private void Start()
@@ -35,7 +36,7 @@ public class BattleUI : MonoBehaviour
 
         // Setup buttons
         attackButton.onClick.AddListener(OnAttack);
-        fleeButton.onClick.AddListener(OnFlee);
+        escapeButton.onClick.AddListener(OnEscape);
 
         // Initialize UI
         UpdateHealthBars();
@@ -49,8 +50,8 @@ public class BattleUI : MonoBehaviour
         UpdateStateText();
 
         // Disable buttons when it's not player's turn
-        attackButton.interactable = (battleManager.state == BattleState.PLAYERTURN);
-        escapeButton.interactable = (battleManager.state == BattleState.PLAYERTURN);
+        attackButton.interactable = (battleManager.currentState == BattleState.PLAYERTURN);
+        escapeButton.interactable = (battleManager.currentState == BattleState.PLAYERTURN);
     }
 
     /// <summary>
@@ -73,7 +74,7 @@ public class BattleUI : MonoBehaviour
 
     private void UpdateHealthBars()
     {
-        playerHealthBar.maxValue = player.maxHP;
+        playerHealthBar.maxValue = playerData.maxHP;
         playerHealthBar.value = player.currentHP;
 
         enemyHealthBar.maxValue = enemy.maxHP;
@@ -82,7 +83,7 @@ public class BattleUI : MonoBehaviour
 
     private void UpdateStateText()
     {
-        switch (battleManager.state)
+        switch (battleManager.currentState)
         {
             case BattleState.PLAYERTURN:
                 stateText.text = "Player Turn";
