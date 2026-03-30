@@ -6,6 +6,10 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Handles user interactions for starting a new game, continuing a game,
+/// accessing settings, saving progress, and exiting the application.
+/// </summary>
 public class TitleScreenUI : MonoBehaviour
 {
     // Set name of new save
@@ -15,9 +19,14 @@ public class TitleScreenUI : MonoBehaviour
     [SerializeField]
     GameObject noMoreRoom;
 
+    // Name of the save that can be edited in Unity editor
     [SerializeField]
     TMPro.TMP_InputField nameInput;
 
+    /// <summary>
+    /// Calls the SettingsDoneButton method from the SettingsMenu instance and
+    /// hides two game objects.
+    /// </summary>
     private void Start()
     {
         SettingsMenu.Instance.SettingsDoneButton();
@@ -27,7 +36,10 @@ public class TitleScreenUI : MonoBehaviour
         noMoreRoom.SetActive(false);
     }
 
-    // Currently loads to alpha scene
+    /// <summary>
+    /// Checks for an empty save slot and displays a message if there is no
+    /// more room, otherwise it prompts the user to set a name for the save.
+    /// </summary>
     public void OnNewGameButton()
     {
         int slot = SaveController.Instance.GetFirstEmptySlot();
@@ -39,25 +51,35 @@ public class TitleScreenUI : MonoBehaviour
         setGameName.SetActive(true);
     }
 
+    /// <summary>
+    /// Calls the ShowMenu method of the LoadMenu.Instance.
+    /// </summary>
     public void OnContinueButton()
     {
         LoadMenu.Instance.ShowMenu();
     }
 
-    // Show settings menu
+    
+    /// <summary>
+    /// Calls the ShowMenu method of the SettingsMenu instance.
+    /// </summary>
     public void OnSettingsButton()
     {
         SettingsMenu.Instance.ShowMenu();
     }
-
-    // Exits application when fully built and running
+    
+    /// <summary>
+    /// Closes the application when called.
+    /// </summary>
     public void OnExitButton ()
     {
         Application.Quit();
     }
 
-    // Save name of game and start next scene, assumes New Game button
-    // has already ensured there is an empty slot available
+    /// <summary>
+    /// Checks if a name input is not empty, gets the first empty slot from
+    /// SaveController, creates a new game with the input name in that slot, and then loads the "BetaScene".
+    /// </summary>
     public void OnSaveButton()
     {
         if (nameInput.text.Length > 0)
@@ -68,7 +90,9 @@ public class TitleScreenUI : MonoBehaviour
         }
     }
 
-    // Close button for error pop-up message
+    /// <summary>
+    /// Sets the active state of the noMoreRoom object to false.
+    /// </summary>
     public void OnClosebutton()
     {
         noMoreRoom.SetActive(false);
