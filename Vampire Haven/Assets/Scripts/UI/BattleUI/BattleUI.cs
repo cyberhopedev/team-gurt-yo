@@ -74,7 +74,7 @@ public class BattleUI : MonoBehaviour
 
     private void UpdateHealthBars()
     {
-        playerHealthBar.maxValue = playerData.maxHP;
+        playerHealthBar.maxValue = player.data.maxHP;
         playerHealthBar.value = player.currentHP;
 
         enemyHealthBar.maxValue = enemy.maxHP;

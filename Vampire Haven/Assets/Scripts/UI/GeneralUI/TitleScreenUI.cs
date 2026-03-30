@@ -38,8 +38,8 @@ public class TitleScreenUI : MonoBehaviour
     /// </summary>
     public void OnNewGameButton()
     {
-        // TODO: Add slot functionality later, just set game name for now
-        setSaveName.SetActive(true);
+        // TODO: Add slot functionality later, just looad into the game for now
+        SaveManager.Instance.NewGame(0, "Alpha Save");
     }
 
     /// <summary>
