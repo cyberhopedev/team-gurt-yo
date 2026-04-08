@@ -2,6 +2,7 @@
 /// Shared behaviors to help with redundancy/repeated code.
 /// </summary
 //###################################################################################//
+
 /// <summary>
 /// Behavior of something that can be damaged and thus killed, in this case
 /// the Player and Enemy
