@@ -20,7 +20,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     // The scene the player starts in
     [Header("Scene")]
-    [SerializeField] private string startingSceneName = "SampleScene";
+    [SerializeField] private string startingSceneName = "AlphaScene";
 
     /// <summary>
     /// Ensures that the SaveManager is a singleton instance and persists across scenes. 
