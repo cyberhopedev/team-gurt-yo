@@ -58,7 +58,7 @@ public class BattleManager : MonoBehaviour
         }
 
         currentState = BattleState.ENEMYTURN;
-        EnemyTurn();
+        StartCoroutine(EnemyTurnDelay());
     }
 
     public void Escape()
@@ -69,6 +69,12 @@ public class BattleManager : MonoBehaviour
         currentState = BattleState.ESCAPED;
 
         SceneManager.LoadScene(overworldScene);
+    }
+
+    IEnumerator EnemyTurnDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        EnemyTurn();
     }
 
     void EnemyTurn()
