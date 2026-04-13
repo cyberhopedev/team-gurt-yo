@@ -11658,7 +11658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestEnemy
   maxHP: 15
   currentHP: 85
-  attackPower: 30
+  attackPower: 3
 --- !u!212 &1569365696
 SpriteRenderer:
   serializedVersion: 2

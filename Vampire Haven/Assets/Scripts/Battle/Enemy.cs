@@ -4,7 +4,7 @@ public class Enemy : MonoBehaviour
 {
     public int maxHP = 15;
     public int currentHP;
-    public int attackPower = 3;
+    public int attackPower = 10;
 
     private void Awake()
     {
