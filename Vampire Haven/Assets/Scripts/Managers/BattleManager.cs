@@ -14,7 +14,7 @@ public class BattleManager : MonoBehaviour
     // Public instance of BattleManager that can be called to other classes
     public static BattleManager Instance { get; private set; }
     // Scene where player has movement to explore
-    public const string overworldScene = "SampleScene";
+    public const string overworldScene = "AlphaScene";
     // Current state of the battle
     public BattleState currentState;
     // References to be initialized in Unity Editor
