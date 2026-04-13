@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveController
   playerData: {fileID: 11400000, guid: cbc79ac95c8c311469e00d7a99afe162, type: 2}
-  startingSceneName: SampleScene
+  startingSceneName: AlphaScene
 --- !u!4 &144993755
 Transform:
   m_ObjectHideFlags: 0
