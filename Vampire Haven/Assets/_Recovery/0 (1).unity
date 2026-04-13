@@ -750,7 +750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameRuntime::Enemy
   maxHP: 75
   currentHP: 75
-  attackPower: 25
+  attackPower: 10
 --- !u!50 &332163411
 Rigidbody2D:
   serializedVersion: 5
@@ -2785,7 +2785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameRuntime::Enemy
   maxHP: 30
   currentHP: 30
-  attackPower: 10
+  attackPower: 3
 --- !u!1 &1253573751
 GameObject:
   m_ObjectHideFlags: 0
