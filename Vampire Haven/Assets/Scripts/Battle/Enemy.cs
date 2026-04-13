@@ -5,15 +5,9 @@ using UnityEngine;
 /// </summary>
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
-    // Enemy stats and how much gold they drop
-    [SerializeField]
-    public int health;
-    [SerializeField]
-    public float speed;
-    [SerializeField]
-    public int defense;
-    [SerializeField]
-    public int gold;
+    public int maxHP = 15;
+    public int currentHP;
+    public int attackPower = 10;
 
     // Movement during the battle towards the target
     [SerializeField]
