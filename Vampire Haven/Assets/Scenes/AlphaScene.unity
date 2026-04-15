@@ -2686,6 +2686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyGoblin
       objectReference: {fileID: 0}
+    - target: {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
+      propertyPath: enemyID
+      value: goblin_001
+      objectReference: {fileID: 0}
     - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.698511
@@ -12779,6 +12783,10 @@ PrefabInstance:
     - target: {fileID: 762628054319778368, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
       propertyPath: m_Name
       value: EnemyGoblin_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
+      propertyPath: enemyID
+      value: goblin_002
       objectReference: {fileID: 0}
     - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
       propertyPath: m_LocalPosition.x
