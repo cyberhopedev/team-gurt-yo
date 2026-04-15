@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-
+// 10 minutes into brackeys video
 /// <summary>
 /// Handles the dialogue for the game
 /// </summary>
