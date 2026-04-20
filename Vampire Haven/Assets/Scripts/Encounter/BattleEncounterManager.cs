@@ -20,10 +20,24 @@ public class BattleEncounterManager : MonoBehaviour
         {
             return;
         }
-
         _triggered = true;
+
+        // Save the player position
+        PlayerData.lastPosition = collision.transform.position;
+        PlayerData.hasSavedPosition = true;
+
+        // Record which enemy is encountered
+        Enemy enemy = GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            CurrentBattle.enemyID = enemy.enemyID;
+        }
+
+        Debug.Log("Saving position: " + PlayerData.lastPosition);
         Debug.Log("Encounter triggered!");
         Debug.Log("Loading battle scene...");
+
+        // Load the battle scene
         SceneManager.LoadScene(battleScene);
     }
 }

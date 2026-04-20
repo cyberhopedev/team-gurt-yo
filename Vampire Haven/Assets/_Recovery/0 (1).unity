@@ -750,7 +750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameRuntime::Enemy
   maxHP: 75
   currentHP: 75
-  attackPower: 25
+  attackPower: 10
 --- !u!50 &332163411
 Rigidbody2D:
   serializedVersion: 5
@@ -2785,7 +2785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameRuntime::Enemy
   maxHP: 30
   currentHP: 30
-  attackPower: 10
+  attackPower: 3
 --- !u!1 &1253573751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,8 +2997,16 @@ PrefabInstance:
       value: EnemyGoblin
       objectReference: {fileID: 0}
     - target: {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: enemyID
-      value: goblin_001
+      propertyPath: maxHP
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
+      propertyPath: currentHP
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
+      propertyPath: attackPower
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12867,8 +12875,16 @@ PrefabInstance:
       value: EnemyGoblin_2
       objectReference: {fileID: 0}
     - target: {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: enemyID
-      value: goblin_002
+      propertyPath: maxHP
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
+      propertyPath: currentHP
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
+      propertyPath: attackPower
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
       propertyPath: m_LocalPosition.x
