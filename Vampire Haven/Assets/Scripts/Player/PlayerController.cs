@@ -16,14 +16,20 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton instance
-        if (Instance == null)
+        // // Singleton instance
+        // if (Instance == null)
+        // {
+        //     Instance = this;
+        // }
+        // else
+        // {
+        //     Destroy(gameObject);
+        // }
+
+        rb = GetComponent<Rigidbody2D>();
+        if (PlayerData.hasSavedPosition)
         {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
+            transform.position = PlayerData.lastPosition;
         }
 
         // DontDestroyOnLoad(gameObject); <-- messing with BattleSystem initialization

@@ -22,12 +22,18 @@ public class BattleManager : MonoBehaviour
     public PlayerBattler player;
     public Enemy enemy;
 
+    /// <summary>
+    /// Starts the battle and recognizes it as a start state
+    /// </summary>
     private void Start()
     {
         currentState = BattleState.START;
         StartBattle();
     }
 
+    /// <summary>
+    /// Starts the battle with the player attacking first
+    /// </summary>
     void StartBattle()
     {
         Debug.Log("Battle started!");
@@ -36,47 +42,62 @@ public class BattleManager : MonoBehaviour
         PlayerTurn();
     }
 
+    /// <summary>
+    /// The Player's turn
+    /// </summary>
     void PlayerTurn()
     {
         Debug.Log("Player Turn");
     }
 
+    /// <summary>
+    /// Attacks the target with the amount of damage stored in the
+    /// PlayerData, updating the states/turns as needed
+    /// </summary>
     public void Attack()
     {
-        if (currentState != BattleState.PLAYERTURN) return;
-
+        // If it is not the player's turn, then don't let them attack
+        if(currentState != BattleState.PLAYERTURN)
+        {
+            return;
+        }
+        // BETA VERSION OF ATTACKING
         int damage = player.data.attackDamage;;
         enemy.TakeDamage(damage);
-
         Debug.Log("Player attacks for " + damage);
 
-        if (enemy.IsDead())
+        // If the enemy is dead, ensure that it is considered dead and record it in a HashSet
+        if(enemy.IsDead())
         {
+            EnemyTracker.defeatedEnemies.Add(enemy.enemyID);
             currentState = BattleState.WON;
             EndBattle();
             return;
         }
-
+        // Otherwise, the Enemy is not dead, so make it the Enemy's turn
         currentState = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurnDelay());
     }
 
+    /// <summary>
+    /// Allows the enemy to escape if it is their turn, returning to the level
+    /// </summary>
     public void Escape()
     {
-        if (currentState != BattleState.PLAYERTURN) return;
+        // If it is not the player's turn, then don't let them escape
+        if(currentState != BattleState.PLAYERTURN)
+        {
+            return;
+        }
 
         Debug.Log("Player escaped!");
         currentState = BattleState.ESCAPED;
-
         SceneManager.LoadScene(overworldScene);
     }
 
-    IEnumerator EnemyTurnDelay()
-    {
-        yield return new WaitForSeconds(1f);
-        EnemyTurn();
-    }
-
+    /// <summary>
+    /// Handles the enemy turn by utilizing the attack power stored
+    /// </summary>
     void EnemyTurn()
     {
         Debug.Log("Enemy Turn");
@@ -97,15 +118,20 @@ public class BattleManager : MonoBehaviour
         PlayerTurn();
     }
 
+    /// <summary>
+    /// Ends the battle and returns to the overworld scene
+    /// </summary>
     void EndBattle()
     {
         if (currentState == BattleState.WON)
         {
             Debug.Log("You won!");
+            // TODO - Add feedback/impacts for winning
         }
         else if (currentState == BattleState.LOST)
         {
             Debug.Log("You lost...");
+            // TODO - Add feedback/impacts for losing
         }
 
         SceneManager.LoadScene(overworldScene);

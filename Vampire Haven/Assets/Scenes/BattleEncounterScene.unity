@@ -11656,6 +11656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddcd2ced9b08504fa44f077af388a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestEnemy
+  enemyID: goblin_002
   maxHP: 15
   currentHP: 85
   attackPower: 30

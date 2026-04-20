@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Battle/PlayerData")]
 public class PlayerData : ScriptableObject
 {
+    public static Vector3 lastPosition;
+    public static bool hasSavedPosition = false;
     public int maxHP = 100;
     public int attackDamage = 10;
     public int speedStat = 5;

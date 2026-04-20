@@ -1,27 +1,26 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Parent/abstract class for all of the Enemies specified in order to function
 /// </summary>
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
+    public string enemyID;
     public int maxHP = 15;
     public int currentHP;
     public int attackPower = 10;
 
-    // Movement during the battle towards the target
-    [SerializeField]
-    protected Transform pointA, pointB;
-    protected Vector3 movementTarget;
+    private void Start()
+    {
+        // Get rid of the enemy in battle
+        if (EnemyTracker.defeatedEnemies.Contains(enemyID))
+        {
+            Destroy(gameObject);
+        }
+    }
 
-    // For animation of sprite
-    protected Animator anim;
-    protected SpriteRenderer rend;
-
-    [SerializeField]
-    protected Transform player;
-
-    public void Start()
+    private void Awake()
     {
         Init();
     }
