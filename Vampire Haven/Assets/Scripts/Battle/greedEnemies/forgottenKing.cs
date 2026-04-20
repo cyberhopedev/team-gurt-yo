@@ -1,18 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class coinSlime : MonoBehaviour
+public class forgottenKing : MonoBehaviour
 {
-    private string[] slimeATK = { "flingGold" };
+    private string[] forgottenKingATK = { "command", "curse", "regret" };
     public string enemyID;
-    public int maxHP = 15;
+    public int maxHP = 40;
     public int currentHP;
-    public int attackPower = 3;
+    public int attackPower = 7;
 
     public int armorDebuff = 0;
-    public int goldBuff = 1;
+    public int goldBuff = 0;
     public int goldDebuff = 0;
     public int dmgDebuff = 0;
+    public bool intentFlee = false;
+    public bool goldToDps = false;
+
 
     private void Start()
     {
@@ -35,25 +38,51 @@ public class coinSlime : MonoBehaviour
 
     public int chooseAttack()
     {
+        //reset debuff if needed
+        dmgDebuff = 0;
+        goldToDps = false;
+
         int damage = 0;
 
-        int len = slimeATK.Length;
+        int len = forgottenKingATK.Length;
 
         int randIdx = UnityEngine.Random.Range(0, len);
 
-        string randomATK = string.Copy(slimeATK[randIdx]);
+        string randomATK = string.Copy(forgottenKingATK[randIdx]);
 
-        if (randomATK.Equals("flingGold")){
-            damage = flingGold();
+        if (randomATK.Equals("command")){
+            damage = command();
+        }
+
+        if (randomATK.Equals("curse"))
+        {
+            damage = curse();
+        }
+
+        if (randomATK.Equals("regret"))
+        {
+            damage = regret();
         }
 
         return damage;
 
     }
 
-    public int flingGold()
+    public int command()
     {
         return attackPower;
+    }
+
+    public int curse()
+    {
+        dmgDebuff = 3;
+        return 0;
+    }
+
+    public int regret()
+    {
+        intentFlee = true;
+        return 0;
     }
 
     public bool IsDead()
@@ -79,5 +108,15 @@ public class coinSlime : MonoBehaviour
     public int damageDebuff()
     {
         return dmgDebuff;
+    }
+
+    public bool attemptFlee()
+    {
+        return intentFlee;
+    }
+
+    public bool goldDamage()
+    {
+        return goldToDps;
     }
 }

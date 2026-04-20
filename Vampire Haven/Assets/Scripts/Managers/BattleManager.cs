@@ -111,6 +111,22 @@ public class BattleManager : MonoBehaviour
         player.loseGold(enemy.goldSteal());
         player.loseDamage(enemy.damageDebuff());
 
+        //Not really sure if flee mechanics will work here. subject to change
+        if(enemy.attemptFlee())
+        {
+            int randChance = UnityEngine.Random.Range(0, 4);
+            if (randChance == 0)
+            {
+                currentState = BattleState.ESCAPED;
+                SceneManager.LoadScene(overworldScene);
+            }
+        }
+
+        if (enemy.goldDamage())
+        {
+            player.TakeDamage(player.gold);
+        }
+
         //def more to come
 
         Debug.Log("Enemy attacks for " + damage);
