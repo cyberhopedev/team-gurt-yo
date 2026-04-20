@@ -76,7 +76,7 @@ public class BattleManager : MonoBehaviour
         }
         // Otherwise, the Enemy is not dead, so make it the Enemy's turn
         currentState = BattleState.ENEMYTURN;
-        EnemyTurn();
+        StartCoroutine(EnemyTurnDelay());
     }
 
     /// <summary>
