@@ -101,9 +101,17 @@ public class BattleManager : MonoBehaviour
     void EnemyTurn()
     {
         Debug.Log("Enemy Turn");
-
-        int damage = enemy.attackPower;
+        // Call enemy chooseAttack method to pick randomAttack and return dmg
+        int damage = enemy.chooseAttack();
         player.TakeDamage(damage);
+
+        //Call all possible enemy status effects 
+        player.loseArmor(enemy.armorReduction());
+        player.gainGold(enemy.goldGive());
+        player.loseGold(enemy.goldSteal());
+        player.loseDamage(enemy.damageDebuff());
+
+        //def more to come
 
         Debug.Log("Enemy attacks for " + damage);
 

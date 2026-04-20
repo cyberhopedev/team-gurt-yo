@@ -10,5 +10,7 @@ public class PlayerData : ScriptableObject
     public static bool hasSavedPosition = false;
     public int maxHP = 100;
     public int attackDamage = 10;
+    public int armor = 0;
+    public int gold = 0;
     public int speedStat = 5;
 }
