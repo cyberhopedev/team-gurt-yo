@@ -13,6 +13,8 @@ public class forgottenKing : MonoBehaviour
     public int goldBuff = 0;
     public int goldDebuff = 0;
     public int dmgDebuff = 0;
+    public int armorBuff = 0;
+    public int dmgBuff = 0;
     public bool intentFlee = false;
     public bool goldToDps = false;
 
@@ -38,8 +40,21 @@ public class forgottenKing : MonoBehaviour
 
     public int chooseAttack()
     {
+
+        //dont give dmg again
+        if (dmgBuff > 0)
+        {
+            dmgBuff = 0;
+        }
+
         //reset debuff if needed
-        dmgDebuff = 0;
+        if (dmgDebuff < 0)
+        {
+            dmgDebuff = 0;
+            //give player back dmg
+            dmgBuff = 5;
+        }
+
         goldToDps = false;
 
         int damage = 0;
@@ -75,7 +90,7 @@ public class forgottenKing : MonoBehaviour
 
     public int curse()
     {
-        dmgDebuff = 3;
+        dmgDebuff -= 3;
         return 0;
     }
 
@@ -118,5 +133,15 @@ public class forgottenKing : MonoBehaviour
     public bool goldDamage()
     {
         return goldToDps;
+    }
+
+    public int armorAddition()
+    {
+        return armorDebuff;
+    }
+
+    public int damageBuff()
+    {
+        return dmgDebuff;
     }
 }

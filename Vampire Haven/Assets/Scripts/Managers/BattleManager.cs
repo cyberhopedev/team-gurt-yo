@@ -100,15 +100,18 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     void EnemyTurn()
     {
+
         Debug.Log("Enemy Turn");
         // Call enemy chooseAttack method to pick randomAttack and return dmg
         int damage = enemy.chooseAttack();
         player.TakeDamage(damage);
 
-        //Call all possible enemy status effects 
+        //Call all possible enemy status effects, (buffs to give player back stats after turn with debuff is over)
+        player.giveArmor(enemy.armorAddition());
         player.loseArmor(enemy.armorReduction());
         player.gainGold(enemy.goldGive());
         player.loseGold(enemy.goldSteal());
+        player.giveDamage(enemy.damageBuff());
         player.loseDamage(enemy.damageDebuff());
 
         //Not really sure if flee mechanics will work here. subject to change

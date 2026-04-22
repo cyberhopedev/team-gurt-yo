@@ -21,6 +21,11 @@ public class PlayerBattler : MonoBehaviour
         currentHP += armor -= dmg;
     }
 
+    public void giveDamage(int addDmg)
+    {
+        playerDmg += addDmg;
+    }
+
     public bool IsDead()
     {
         return currentHP <= 0;
@@ -29,6 +34,11 @@ public class PlayerBattler : MonoBehaviour
     public void loseArmor(int armRed)
     {
         armor -= armRed;
+    }
+
+    public void giveArmor(int addArmor)
+    {
+        armor += addArmor;
     }
 
     public void loseGold(int goldAmnt)

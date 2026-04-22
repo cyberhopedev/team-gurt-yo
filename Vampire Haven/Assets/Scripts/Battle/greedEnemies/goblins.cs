@@ -13,8 +13,12 @@ public class goblins : MonoBehaviour
     public int goldBuff = 0;
     public int goldDebuff = 0;
     public int dmgDebuff = 0;
+    public int armorBuff = 0;
+    public int dmgBuff = 0;
     public bool intentFlee = false;
     public bool goldToDps = false;
+
+    public int goldStolen = 0;
 
     private void Start()
     {
@@ -70,6 +74,7 @@ public class goblins : MonoBehaviour
     public int steal()
     {
         goldDebuff = 5;
+        goldStolen += 5;
         return 0;
     }
 
@@ -86,6 +91,10 @@ public class goblins : MonoBehaviour
 
     public bool IsDead()
     {
+        if (currentHP < 0)
+        {
+            goldBuff = goldStolen;
+        }
         return currentHP <= 0;
     }
 
@@ -117,5 +126,15 @@ public class goblins : MonoBehaviour
     public bool goldDamage()
     {
         return goldToDps;
+    }
+
+    public int armorAddition()
+    {
+        return armorDebuff;
+    }
+
+    public int damageBuff()
+    {
+        return dmgDebuff;
     }
 }

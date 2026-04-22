@@ -13,6 +13,8 @@ public class coinSlime : MonoBehaviour
     public int goldBuff = 1;
     public int goldDebuff = 0;
     public int dmgDebuff = 0;
+    public int armorBuff = 0;
+    public int dmgBuff = 0;
     public bool intentFlee = false;
     public bool goldToDps = false;
 
@@ -92,6 +94,16 @@ public class coinSlime : MonoBehaviour
     public bool goldDamage()
     {
         return goldToDps;
+    }
+
+    public int armorAddition()
+    {
+        return armorDebuff;
+    }
+
+    public int damageBuff()
+    {
+        return dmgDebuff;
     }
 
 }

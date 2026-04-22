@@ -13,6 +13,8 @@ public class dragonsHead : MonoBehaviour
     public int goldBuff = 0;
     public int goldDebuff = 0;
     public int dmgDebuff = 0;
+    public int armorBuff = 0;
+    public int dmgBuff = 0;
     public bool intentFlee = false;
     public bool goldToDps = false;
 
@@ -105,9 +107,12 @@ public class dragonsHead : MonoBehaviour
             damage = bite();
         }
 
+
         if (intimidateBool)
         {
-
+            int extraDmg = damage / 2;
+            damage += extraDmg;
+            intimidateBool = false;
         }
 
         return damage;
@@ -170,4 +175,15 @@ public class dragonsHead : MonoBehaviour
     {
         return goldToDps;
     }
+
+    public int armorAddition()
+    {
+        return armorDebuff;
+    }
+
+    public int damageBuff()
+    {
+        return dmgDebuff;
+    }
+
 }

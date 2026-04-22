@@ -9,8 +9,10 @@ public class Enemy : MonoBehaviour
     public int attackPower = 3;
 
     public int armorDebuff = 0;
+    public int armorBuff = 0;
     public int goldBuff = 0;
     public int goldDebuff = 0;
+    public int dmgBuff = 0;
     public int dmgDebuff = 0;
     public bool intentFlee = false;
     public bool goldToDps = false;
@@ -77,5 +79,15 @@ public class Enemy : MonoBehaviour
     public bool goldDamage()
     {
         return goldToDps;
+    }
+
+    public int armorAddition()
+    {
+        return armorDebuff;
+    }
+
+    public int damageBuff()
+    {
+        return dmgDebuff;
     }
 }
