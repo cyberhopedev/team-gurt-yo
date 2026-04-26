@@ -1,44 +1,35 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class giantSnail : MonoBehaviour
+public class giantSnail : Enemy
 {
     private string[] giantSnailATK = { "rest", "panicSpray", "slam", "energyBurst" };
-    public string enemyID;
-    public int maxHP = 100;
-    public int currentHP;
-    public int attackPower = 20;
+    //public string enemyID;
+    //public int maxHP = 100;
+    //public int currentHP;
+    //public int attackPower = 20;
 
-    public int armorDebuff = 0;
-    public int goldBuff = 0;
-    public int goldDebuff = 0;
-    public int dmgDebuff = 0;
-    public int armorBuff = 0;
-    public int dmgBuff = 0;
-    public bool intentFlee = false;
-    public bool goldToDps = false;
+    //public int armorDebuff = 0;
+    //public int goldBuff = 0;
+    //public int goldDebuff = 0;
+    //public int dmgDebuff = 0;
+    //public int armorBuff = 0;
+    //public int dmgBuff = 0;
+    //public bool intentFlee = false;
+    //public bool goldToDps = false;
 
+    int armor = 0;
 
-    private void Start()
+    public bool attackChosen = false;
+
+    public override void TakeDamage(int dmg)
     {
-        // Get rid of the enemy in battle
-        if (EnemyTracker.defeatedEnemies.Contains(enemyID))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Awake()
-    {
-        currentHP = maxHP;
-    }
-
-    public void TakeDamage(int dmg)
-    {
+        dmg -= armor;
         currentHP -= dmg;
+        armor = 0;
     }
 
-    public int chooseAttack()
+    public override int chooseAttack()
     {
 
         int damage = 0;
@@ -62,6 +53,7 @@ public class giantSnail : MonoBehaviour
         if (randomATK.Equals("slam"))
         {
             damage = slam();
+            attackChosen = true;
         }
 
         if (randomATK.Equals("energyBurst"))
@@ -75,66 +67,23 @@ public class giantSnail : MonoBehaviour
 
     public int rest()
     {
-        return attackPower;
+        return currentHP += 15;
     }
 
     public int panicSpray()
     {
+        armor += 15; 
         return 0;
     }
 
     public int slam()
     {
-        return 0;
+        return attackPower;
     }
 
     public int energyBurst()
     {
-        return 0;
-    }
-
-    public bool IsDead()
-    {
-        return currentHP <= 0;
-    }
-
-    public int armorReduction()
-    {
-        return armorDebuff;
-    }
-
-    public int goldGive()
-    {
-        return goldBuff;
-    }
-
-    public int goldSteal()
-    {
-        return goldDebuff;
-    }
-
-    public int damageDebuff()
-    {
-        return dmgDebuff;
-    }
-
-    public bool attemptFlee()
-    {
-        return intentFlee;
-    }
-
-    public bool goldDamage()
-    {
-        return goldToDps;
-    }
-
-    public int armorAddition()
-    {
-        return armorDebuff;
-    }
-
-    public int damageBuff()
-    {
-        return dmgDebuff;
+        armor += 10;
+        return 10;
     }
 }

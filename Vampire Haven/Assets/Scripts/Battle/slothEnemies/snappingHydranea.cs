@@ -1,40 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class snappingHydranea : MonoBehaviour
+public class snappingHydranea : Enemy
 {
     private string[] snappingHydraneaATK = { "prepareTrap", "alluringScent", "ensnare" };
-    public string enemyID;
-    public int maxHP = 85;
-    public int currentHP;
-    public int attackPower = 25;
+    //public string enemyID;
+    //public int maxHP = 85;
+    //public int currentHP;
+    //public int attackPower = 25;
 
-    public int armorDebuff = 0;
-    public int goldBuff = 0;
-    public int goldDebuff = 0;
-    public int dmgDebuff = 0;
-    public int armorBuff = 0;
-    public int dmgBuff = 0;
-    public bool intentFlee = false;
-    public bool goldToDps = false;
+    //public int armorDebuff = 0;
+    //public int goldBuff = 0;
+    //public int goldDebuff = 0;
+    //public int dmgDebuff = 0;
+    //public int armorBuff = 0;
+    //public int dmgBuff = 0;
+    //public bool intentFlee = false;
+    //public bool goldToDps = false;
 
     public int armor = 0;
 
-    private void Start()
-    {
-        // Get rid of the enemy in battle
-        if (EnemyTracker.defeatedEnemies.Contains(enemyID))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Awake()
-    {
-        currentHP = maxHP;
-    }
-
-    public void TakeDamage(int dmg)
+    public override void TakeDamage(int dmg)
     {
 
         dmg -= armor;
@@ -42,7 +28,7 @@ public class snappingHydranea : MonoBehaviour
 
     }
 
-    public int chooseAttack()
+    public override int chooseAttack()
     {
         //reset debuff if needed
        
@@ -108,39 +94,9 @@ public class snappingHydranea : MonoBehaviour
         return attackPower;
     }
 
-    public bool IsDead()
-    {
-        return currentHP <= 0;
-    }
-
     public int armorReduction()
     {
         return armorDebuff;
-    }
-
-    public int goldGive()
-    {
-        return goldBuff;
-    }
-
-    public int goldSteal()
-    {
-        return goldDebuff;
-    }
-
-    public int damageDebuff()
-    {
-        return dmgDebuff;
-    }
-
-    public bool attemptFlee()
-    {
-        return intentFlee;
-    }
-
-    public bool goldDamage()
-    {
-        return goldToDps;
     }
 
     public int armorAddition()
@@ -148,8 +104,4 @@ public class snappingHydranea : MonoBehaviour
         return armorDebuff;
     }
 
-    public int damageBuff()
-    {
-        return dmgDebuff;
-    }
 }

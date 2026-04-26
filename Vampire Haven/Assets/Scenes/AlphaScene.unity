@@ -2389,6 +2389,9 @@ GameObject:
   m_Component:
   - component: {fileID: 332163408}
   - component: {fileID: 332163407}
+  - component: {fileID: 332163411}
+  - component: {fileID: 332163410}
+  - component: {fileID: 332163409}
   m_Layer: 0
   m_Name: forgottenKing_0
   m_TagString: Untagged
@@ -2470,6 +2473,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 974206997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332163409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332163406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d43a129bfe08044b9056614462ee71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameRuntime::forgottenKing
+  enemyID: forgottenKingID
+  maxHP: 40
+  currentHP: 40
+  attackPower: 7
+  armorDebuff: 0
+  armorBuff: 0
+  goldBuff: 0
+  goldDebuff: 0
+  dmgBuff: 0
+  dmgDebuff: 0
+  intentFlee: 0
+  goldToDps: 0
+--- !u!50 &332163410
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332163406}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &332163411
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332163406}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.46, y: 2.56}
+    newSize: {x: 1.46, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.46, y: 2.56}
+  m_EdgeRadius: 0
 --- !u!1 &337291769
 GameObject:
   m_ObjectHideFlags: 0
@@ -5201,6 +5301,9 @@ GameObject:
   m_Component:
   - component: {fileID: 808951207}
   - component: {fileID: 808951206}
+  - component: {fileID: 808951210}
+  - component: {fileID: 808951209}
+  - component: {fileID: 808951208}
   m_Layer: 0
   m_Name: dragonsSkull_0
   m_TagString: Untagged
@@ -5282,6 +5385,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 974206997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &808951208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808951205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa6bbb858b0ba94bb3c24b6ff9c49a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameRuntime::dragonsHead
+  enemyID: dragonsHeadID
+  maxHP: 50
+  currentHP: 0
+  attackPower: 8
+  armorDebuff: 0
+  armorBuff: 0
+  goldBuff: 0
+  goldDebuff: 0
+  dmgBuff: 0
+  dmgDebuff: 0
+  intentFlee: 0
+  goldToDps: 0
+--- !u!50 &808951209
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808951205}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &808951210
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808951205}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.56, y: 2.56}
+  m_EdgeRadius: 0
 --- !u!1 &811785300
 GameObject:
   m_ObjectHideFlags: 0
@@ -5965,6 +6165,9 @@ GameObject:
   m_Component:
   - component: {fileID: 880189616}
   - component: {fileID: 880189615}
+  - component: {fileID: 880189619}
+  - component: {fileID: 880189618}
+  - component: {fileID: 880189617}
   m_Layer: 0
   m_Name: slave_0
   m_TagString: Untagged
@@ -6046,6 +6249,106 @@ Transform:
   m_Children: []
   m_Father: {fileID: 704295653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880189617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880189614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2cf8e058759954faa6325e104d6f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameRuntime::slave
+  enemyID: slaveID
+  maxHP: 30
+  currentHP: 30
+  attackPower: 8
+  armorDebuff: 0
+  goldBuff: 0
+  goldDebuff: 0
+  dmgDebuff: 0
+  armorBuff: 0
+  dmgBuff: 0
+  intentFlee: 0
+  goldToDps: 0
+  poison: 0
+  poisonTimer: 3
+  pityBool: 0
+--- !u!50 &880189618
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880189614}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &880189619
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880189614}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.62, y: 2.1}
+    newSize: {x: 1.62, y: 2.1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.62, y: 2.1}
+  m_EdgeRadius: 0
 --- !u!1 &899932182
 GameObject:
   m_ObjectHideFlags: 0
@@ -6782,7 +7085,6 @@ Transform:
   - {fileID: 1179441277}
   - {fileID: 332163408}
   - {fileID: 808951207}
-  - {fileID: 1358291185}
   - {fileID: 1982472447}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8518,10 +8820,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1179441277}
   - component: {fileID: 1179441276}
-  - component: {fileID: 1179441281}
   - component: {fileID: 1179441280}
   - component: {fileID: 1179441279}
   - component: {fileID: 1179441278}
+  - component: {fileID: 1179441281}
   m_Layer: 0
   m_Name: coinFilledSlime_0
   m_TagString: Untagged
@@ -8697,16 +8999,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1179441274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ddcd2ced9b08504fa44f077af388a23, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ad46538cbb1aaf4182414912b9e8e72, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: GameRuntime::Enemy
-  enemyID: coinSlime01
+  m_EditorClassIdentifier: GameRuntime::coinSlime
+  enemyID: coinSlimeID
   maxHP: 15
   currentHP: 15
   attackPower: 3
   armorDebuff: 0
   armorBuff: 0
-  goldBuff: 0
+  goldBuff: 1
   goldDebuff: 0
   dmgBuff: 0
   dmgDebuff: 0
@@ -10876,72 +11178,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1001 &1358291184
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 974206997}
-    m_Modifications:
-    - target: {fileID: 762628054319778368, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_Name
-      value: EnemyGoblin
-      objectReference: {fileID: 0}
-    - target: {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: enemyID
-      value: goblin_001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 16.698511
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.8817899
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
---- !u!4 &1358291185 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
-  m_PrefabInstance: {fileID: 1358291184}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1372375448
 GameObject:
   m_ObjectHideFlags: 0
@@ -11510,6 +11746,11 @@ PolygonCollider2D:
       - {x: 0.039747775, y: -1.1432456}
       - {x: 0.32176363, y: -1.1500642}
   m_UseDelaunayMesh: 1
+--- !u!1 &1434432948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 762628054319778368, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
+  m_PrefabInstance: {fileID: 1982472446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438442912
 GameObject:
   m_ObjectHideFlags: 0
@@ -174598,7 +174839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.16179
+      value: -2.21
       objectReference: {fileID: 0}
     - target: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -174632,16 +174873,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6615160294190378401, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 762628054319778368, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1982472448}
   m_SourcePrefab: {fileID: 100100000, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
 --- !u!4 &1982472447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8749741582578698775, guid: 426f2cb3547c68d479beb5d27c77db7c, type: 3}
   m_PrefabInstance: {fileID: 1982472446}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1982472448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434432948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987e153b284fa1f4f8460b06445e6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameRuntime::goblins
+  enemyID: goblinID
+  maxHP: 25
+  currentHP: 25
+  attackPower: 5
+  armorDebuff: 0
+  armorBuff: 0
+  goldBuff: 0
+  goldDebuff: 0
+  dmgBuff: 0
+  dmgDebuff: 0
+  intentFlee: 0
+  goldToDps: 0
+  goldStolen: 0
 --- !u!1 &1993942935
 GameObject:
   m_ObjectHideFlags: 0

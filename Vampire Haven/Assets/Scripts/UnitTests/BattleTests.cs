@@ -43,7 +43,7 @@ public class BattleTests
     {
         
         // Create enemy and set health
-        var enemy = new Enemy();
+        var enemy = new goblins();
         enemy.currentHP = 100;
 
         // Call take damage and ensure that the enemy's health is updated
@@ -58,7 +58,7 @@ public class BattleTests
     public void EnemyDiesWhenHPZero()
     {
         // Create enemy and set health
-        var enemy = new Enemy();
+        var enemy = new goblins();
         enemy.currentHP = 100;
 
         // Take enough damage to die and ensure that the system knows it's dead

@@ -1,22 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class vengefulSpirit : MonoBehaviour
+public class vengefulSpirit : Enemy
 {
     private string[] vengefulSpiritATK = { "piercingGaze", "perfectImage", "reflection", "anger" };
-    public string enemyID;
-    public int maxHP = 55;
-    public int currentHP;
-    public int attackPower = 9;
+    //public string enemyID;
+    //public int maxHP = 55;
+    //public int currentHP;
+    //public int attackPower = 9;
 
-    public int armorDebuff = 0;
-    public int goldBuff = 0;
-    public int goldDebuff = 0;
-    public int dmgDebuff = 0;
-    public int armorBuff = 0;
-    public int dmgBuff = 0;
-    public bool intentFlee = false;
-    public bool goldToDps = false;
+    //public int armorDebuff = 0;
+    //public int goldBuff = 0;
+    //public int goldDebuff = 0;
+    //public int dmgDebuff = 0;
+    //public int armorBuff = 0;
+    //public int dmgBuff = 0;
+    //public bool intentFlee = false;
+    //public bool goldToDps = false;
 
     //anger
     public int angerExtraDmg = 0;
@@ -27,21 +27,7 @@ public class vengefulSpirit : MonoBehaviour
     //reflection
     public bool reflectionActive = false;
 
-    private void Start()
-    {
-        // Get rid of the enemy in battle
-        if (EnemyTracker.defeatedEnemies.Contains(enemyID))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Awake()
-    {
-        currentHP = maxHP;
-    }
-
-    public void TakeDamage(int dmg)
+    public override void TakeDamage(int dmg)
     {
         //reflection
         if (reflectionActive)
@@ -57,7 +43,7 @@ public class vengefulSpirit : MonoBehaviour
 
     }
 
-    public int chooseAttack()
+    public override int chooseAttack()
     {
         //reset debuff if needed
        
@@ -113,50 +99,5 @@ public class vengefulSpirit : MonoBehaviour
     {
         angerExtraDmg += 3;
         return 0;
-    }
-
-    public bool IsDead()
-    {
-        return currentHP <= 0;
-    }
-
-    public int armorReduction()
-    {
-        return armorDebuff;
-    }
-
-    public int goldGive()
-    {
-        return goldBuff;
-    }
-
-    public int goldSteal()
-    {
-        return goldDebuff;
-    }
-
-    public int damageDebuff()
-    {
-        return dmgDebuff;
-    }
-
-    public bool attemptFlee()
-    {
-        return intentFlee;
-    }
-
-    public bool goldDamage()
-    {
-        return goldToDps;
-    }
-
-    public int armorAddition()
-    {
-        return armorDebuff;
-    }
-
-    public int damageBuff()
-    {
-        return dmgDebuff;
     }
 }

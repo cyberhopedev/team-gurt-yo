@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     public string enemyID;
-    public int maxHP = 15;
+    public int maxHP;
     public int currentHP;
-    public int attackPower = 3;
+    public int attackPower;
 
     public int armorDebuff = 0;
     public int armorBuff = 0;
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     //will have more status effects as more enemies implemented
 
-    private void Start()
+    protected virtual void Start()
     {
         // Get rid of the enemy in battle
         if (EnemyTracker.defeatedEnemies.Contains(enemyID))
@@ -29,64 +29,59 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         currentHP = maxHP;
     }
 
-    public void TakeDamage(int dmg)
+    public virtual void TakeDamage(int dmg)
     {
         currentHP -= dmg;
     }
 
-    public int chooseAttack()
-    {
-        
-        return 0;
-
-    }
-
-    public bool IsDead()
+    public abstract int chooseAttack();
+    
+    public virtual bool IsDead()
     {
         return currentHP <= 0;
     }
 
-    public int armorReduction()
+    public virtual int armorReduction()
     {
         return armorDebuff;
     }
 
-    public int goldGive()
+    public virtual int goldGive()
     {
         return goldBuff;
     }
 
-    public int goldSteal()
+    public virtual int goldSteal()
     {
         return goldDebuff;
     }
 
-    public int damageDebuff()
+    public virtual int damageDebuff()
     {
         return dmgDebuff;
     }
 
-    public bool attemptFlee()
+    public virtual bool attemptFlee()
     {
         return intentFlee;
     }
 
-    public bool goldDamage()
+    public virtual bool goldDamage()
     {
         return goldToDps;
     }
 
-    public int armorAddition()
+    public virtual int armorAddition()
     {
         return armorDebuff;
     }
 
-    public int damageBuff()
+    public virtual int damageBuff()
     {
         return dmgDebuff;
     }

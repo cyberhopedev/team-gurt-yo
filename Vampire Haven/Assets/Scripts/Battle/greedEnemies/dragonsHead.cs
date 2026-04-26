@@ -1,46 +1,27 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class dragonsHead : MonoBehaviour
+public class dragonsHead : Enemy
 {
     private string[] dragonsHeadATK = { "spiritBreath", "intimidate", "enrage", "bite" };
-    public string enemyID;
-    public int maxHP = 50;
-    public int currentHP;
-    public int attackPower = 8;
+    //public string enemyID;
+    //public int maxHP = 50;
+    //public int currentHP;
+    //public int attackPower = 8;
 
-    public int armorDebuff = 0;
-    public int goldBuff = 0;
-    public int goldDebuff = 0;
-    public int dmgDebuff = 0;
-    public int armorBuff = 0;
-    public int dmgBuff = 0;
-    public bool intentFlee = false;
-    public bool goldToDps = false;
+    //public int armorDebuff = 0;
+    //public int goldBuff = 0;
+    //public int goldDebuff = 0;
+    //public int dmgDebuff = 0;
+    //public int armorBuff = 0;
+    //public int dmgBuff = 0;
+    //public bool intentFlee = false;
+    //public bool goldToDps = false;
 
     private bool enraged = false;
     private bool intimidateBool = false;
 
-    private void Start()
-    {
-        // Get rid of the enemy in battle
-        if (EnemyTracker.defeatedEnemies.Contains(enemyID))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Awake()
-    {
-        currentHP = maxHP;
-    }
-
-    public void TakeDamage(int dmg)
-    {
-        currentHP -= dmg;
-    }
-
-    public int chooseAttack()
+    public override int chooseAttack()
     {
 
         int damage = 0;
@@ -139,51 +120,6 @@ public class dragonsHead : MonoBehaviour
     public int bite()
     {
         return attackPower;
-    }
-
-    public bool IsDead()
-    {
-        return currentHP <= 0;
-    }
-
-    public int armorReduction()
-    {
-        return armorDebuff;
-    }
-
-    public int goldGive()
-    {
-        return goldBuff;
-    }
-
-    public int goldSteal()
-    {
-        return goldDebuff;
-    }
-
-    public int damageDebuff()
-    {
-        return dmgDebuff;
-    }
-
-    public bool attemptFlee()
-    {
-        return intentFlee;
-    }
-
-    public bool goldDamage()
-    {
-        return goldToDps;
-    }
-
-    public int armorAddition()
-    {
-        return armorDebuff;
-    }
-
-    public int damageBuff()
-    {
-        return dmgDebuff;
     }
 
 }

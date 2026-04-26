@@ -1,22 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class demonOfHate : MonoBehaviour
+public class demonOfHate : Enemy
 {
     private string[] demonOfHateATK = { "flurryOfSwipes", "claw", "flight", "screech" };
-    public string enemyID;
-    public int maxHP = 70;
-    public int currentHP;
-    public int attackPower = 14;
+    //public string enemyID;
+    //public int maxHP = 70;
+    //public int currentHP;
+    //public int attackPower = 14;
 
-    public int armorDebuff = 0;
-    public int goldBuff = 0;
-    public int goldDebuff = 0;
-    public int dmgDebuff = 0;
-    public int armorBuff = 0;
-    public int dmgBuff = 0;
-    public bool intentFlee = false;
-    public bool goldToDps = false;
+    //public int armorDebuff = 0;
+    //public int goldBuff = 0;
+    //public int goldDebuff = 0;
+    //public int dmgDebuff = 0;
+    //public int armorBuff = 0;
+    //public int dmgBuff = 0;
+    //public bool intentFlee = false;
+    //public bool goldToDps = false;
 
     public bool bleed = false;
     public int bleedTimer = 3;
@@ -24,21 +24,7 @@ public class demonOfHate : MonoBehaviour
     public int armor = 0;
     public int armorDmg = 0;
 
-    private void Start()
-    {
-        // Get rid of the enemy in battle
-        if (EnemyTracker.defeatedEnemies.Contains(enemyID))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Awake()
-    {
-        currentHP = maxHP;
-    }
-
-    public void TakeDamage(int dmg)
+    public override void TakeDamage(int dmg)
     {
         if (armor > 0)
         {
@@ -60,7 +46,7 @@ public class demonOfHate : MonoBehaviour
         currentHP -= dmg;
     }
 
-    public int chooseAttack()
+    public override int chooseAttack()
     {
 
         //dont give dmg again
@@ -165,49 +151,13 @@ public class demonOfHate : MonoBehaviour
         return 0;
     }
 
-    public bool IsDead()
-    {
-        return currentHP <= 0;
-    }
-
-    public int armorReduction()
-    {
-        return armorDebuff;
-    }
-
-    public int goldGive()
-    {
-        return goldBuff;
-    }
-
-    public int goldSteal()
-    {
-        return goldDebuff;
-    }
-
     public int damageDebuff()
     {
         return dmgDebuff;
-    }
-
-    public bool attemptFlee()
-    {
-        return intentFlee;
-    }
-
-    public bool goldDamage()
-    {
-        return goldToDps;
-    }
-
-    public int armorAddition()
-    {
-        return armorDebuff;
     }
 
     public int damageBuff()
     {
         return dmgDebuff;
     }
-
 }
