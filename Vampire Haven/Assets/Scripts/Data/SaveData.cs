@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 
 /// <summary>
 /// Stores data that needs to be saved for player progression, which includes
@@ -11,6 +13,8 @@ public class SaveData
     public Vector3 playerPosition;
     // Health of the player, used for loading back with the same health
     public int currentHP;
+
+    public List<InventorySaveData> inventorySaveData;
 
     // Information needed for LoadSaveUI
     public string gameName;
