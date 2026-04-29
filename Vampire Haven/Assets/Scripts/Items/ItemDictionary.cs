@@ -1,37 +1,53 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Holds every ItemSO in the game so save/load can look up an item
+/// by its name string.
+/// </summary>
 public class ItemDictionary : MonoBehaviour
 {
-    public List<Item> itemPrefabs;
-    private Dictionary<int, GameObject> itemDictionary;
+    // Public instance of ItemDictionary that can be called to other classes
+    public static ItemDictionary Instance { get; private set; }
+
+    [Tooltip("Drag every ItemSO asset (potions, weapons, key items) here.")]
+    public List<ItemSO> allItems;
+    private Dictionary<string, ItemSO> _itemDictionary;
 
     public void Awake()
     {
-        itemDictionary = new Dictionary<int, GameObject>();
-
-        //auto inc ids
-        for (int i = 0; i < itemPrefabs.Count; i++)
+        if (Instance != null && Instance != this)
         {
-            if (itemPrefabs[i] != null)
-            {
-                itemPrefabs[i].ID = i + 1;
-            }
-
+            Destroy(gameObject);
+            return;
         }
-        foreach(Item item in itemPrefabs)
+        Instance = this;
+
+        _itemDictionary = new Dictionary<string, ItemSO>();
+        foreach(ItemSO item in allItems)
         {
-            itemDictionary[item.ID] = item.gameObject;
+            if (item != null && !_itemDictionary.ContainsKey(item.itemName))
+            {
+                _itemDictionary.Add(item.itemName, item);
+            }
+            else
+            {
+                Debug.LogWarning($"ItemDictionary: duplicate item name '{item.itemName}' — only the first will be registered.");
+            }
         }
     }
 
-    public GameObject GetItemPrefab(int itemID)
+    public ItemSO GetItemByID(string itemName)
     {
-        itemDictionary.TryGetValue(itemID, out GameObject prefab);
-        if(prefab == null)
+        if (string.IsNullOrEmpty(itemName))
         {
-            Debug.LogWarning($"Item with ID{itemID}item id not foun in dictionary");
+            return null;
         }
-        return prefab;
+        _itemDictionary.TryGetValue(itemName, out ItemSO item);
+        if(item == null)
+        {
+            Debug.LogWarning($"ItemDictionary: '{itemName}' not registered.");
+        }
+        return item;
     }
 }
