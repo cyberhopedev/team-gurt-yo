@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
 /// <summary>
 /// Stores data that needs to be saved for player progression, which includes
 /// player position, inventory, current abilities, and cleared encounters
@@ -22,4 +21,11 @@ public class SaveData
     public float totalPlayTimeSeconds;
     public string locationName; 
     public string sceneName;
+}
+
+[System.Serializable]
+public class InventorySaveData
+{
+    public int itemID;
+    public int slotIndex; //idx of slot where item is placed within our inventory
 }
