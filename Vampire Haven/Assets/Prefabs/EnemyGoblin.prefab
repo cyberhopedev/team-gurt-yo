@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8749741582578698775}
   - component: {fileID: 6599153887870946823}
-  - component: {fileID: 6615160294190378401}
   - component: {fileID: 6282478250862357498}
   - component: {fileID: -8513644291249700299}
   - component: {fileID: 8966804810051783727}
+  - component: {fileID: 4789725220795481013}
   m_Layer: 0
   m_Name: EnemyGoblin
   m_TagString: Untagged
@@ -95,21 +95,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &6615160294190378401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762628054319778368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ddcd2ced9b08504fa44f077af388a23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestEnemy
-  maxHP: 15
-  currentHP: 85
-  attackPower: 3
 --- !u!61 &6282478250862357498
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,3 +180,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1366156f40f4b4f9b757ba19c73bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleEncounterManager
+--- !u!114 &4789725220795481013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762628054319778368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987e153b284fa1f4f8460b06445e6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameRuntime::goblins
+  enemyID: 
+  maxHP: 0
+  currentHP: 0
+  attackPower: 0
+  armorDebuff: 0
+  armorBuff: 0
+  goldBuff: 0
+  goldDebuff: 0
+  dmgBuff: 0
+  dmgDebuff: 0
+  intentFlee: 0
+  goldToDps: 0
+  goldStolen: 0

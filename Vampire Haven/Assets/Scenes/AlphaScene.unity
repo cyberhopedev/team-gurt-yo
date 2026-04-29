@@ -1244,22 +1244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a49c2014c87434b88d70777843394a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  inventoryPanel: {fileID: 2122646523}
-  slotPrefab: {fileID: 7404669463245885674, guid: f51c9575d1f5a5345a1c3ca40805c822, type: 3}
-  slotCount: 16
-  itemPrefabs:
-  - {fileID: 4292132828100179130, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
-  - {fileID: 3398430071056997899, guid: 24321ae54cdbafe4c9a1682622b30f80, type: 3}
-  - {fileID: 5282137188391547407, guid: 7546ed5d0c25b7d40a8122b0514c8cea, type: 3}
-  - {fileID: 524895827288635368, guid: af58558782d73a74599d220cff636ded, type: 3}
-  - {fileID: 2338264082287109034, guid: 86d6672a87b75c342b2961d73d28e94a, type: 3}
-  - {fileID: 2949533129900281484, guid: 85ca39633f6d6f647be250a814b471c3, type: 3}
-  - {fileID: 5833209746540116083, guid: e1427b8ac2925e14dbf61aa989c1e496, type: 3}
-  - {fileID: 3513475645710744759, guid: 0b14399d536985f44a99ebfb40b14059, type: 3}
-  - {fileID: 3014186495291259013, guid: bd2371ee03995414aabf705682631e1c, type: 3}
-  - {fileID: 2943791322768406835, guid: 7396ebec88ca29449b46966729402a13, type: 3}
-  - {fileID: 8609396568822265216, guid: 8a3192c6dc81d784d84ed46a48a43480, type: 3}
-  - {fileID: 315639302657820530, guid: 465b37031dce3dd4fb3199d8327f5f6c, type: 3}
 --- !u!1 &158629500
 GameObject:
   m_ObjectHideFlags: 0
@@ -14913,19 +14897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc3208955ac4b74fa6429b30778e647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameRuntime::ItemDictionary
-  itemPrefabs:
-  - {fileID: 585260504805629398, guid: 24321ae54cdbafe4c9a1682622b30f80, type: 3}
-  - {fileID: 7960972956751868370, guid: 7546ed5d0c25b7d40a8122b0514c8cea, type: 3}
-  - {fileID: -5571276430264377920, guid: e41628e3b74c6f24cafe451e2002f846, type: 3}
-  - {fileID: 2341353427315291189, guid: af58558782d73a74599d220cff636ded, type: 3}
-  - {fileID: 524048938339000439, guid: 86d6672a87b75c342b2961d73d28e94a, type: 3}
-  - {fileID: 2064440153928038247, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
-  - {fileID: 1141730339407334737, guid: 85ca39633f6d6f647be250a814b471c3, type: 3}
-  - {fileID: 8630405600872004526, guid: e1427b8ac2925e14dbf61aa989c1e496, type: 3}
-  - {fileID: 1726209121596342122, guid: 0b14399d536985f44a99ebfb40b14059, type: 3}
-  - {fileID: 1072542622352391000, guid: bd2371ee03995414aabf705682631e1c, type: 3}
-  - {fileID: 1147459047745010414, guid: 7396ebec88ca29449b46966729402a13, type: 3}
-  - {fileID: 5786102839097226845, guid: 8a3192c6dc81d784d84ed46a48a43480, type: 3}
 --- !u!1 &1491052242
 GameObject:
   m_ObjectHideFlags: 0
@@ -176011,13 +175982,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bf69d75a0d70124b904ebcbc5a1fb47, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: GameRuntime::tabController
   tabImages:
   - {fileID: 1456026962}
   - {fileID: 1471161897}
   pages:
-  - {fileID: 2122646523}
-  - {fileID: 290750803}
+  - {fileID: 1456026960}
+  - {fileID: 1471161895}
 --- !u!1 &1720230785
 GameObject:
   m_ObjectHideFlags: 0
