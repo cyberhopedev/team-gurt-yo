@@ -14,4 +14,8 @@ public static class GameConstants {
 
     // Inventory
     public const int MAX_INVENTORY_SLOTS = 8;
+
+    public static class Scenes{}
+    public static class Save{}
+    public static class Inventory{}
 }
