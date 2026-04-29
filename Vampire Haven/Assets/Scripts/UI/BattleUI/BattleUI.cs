@@ -28,7 +28,7 @@ public class BattleUI : MonoBehaviour
 
     private void Start()
     {
-        battleManager = FindFirstObjectByType<BattleManager>();
+        battleManager = FindAnyObjectByType<BattleManager>();
         // Hide if not in a battle
         if (battleManager == null)
         {
