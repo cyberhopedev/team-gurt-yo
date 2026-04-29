@@ -47,7 +47,7 @@ public class coinSlime : Enemy
     }
 
    
-    public int goldGive()
+    public override int goldGive()
     {
         return goldBuff;
     }

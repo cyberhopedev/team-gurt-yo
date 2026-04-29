@@ -92,12 +92,12 @@ public class theExecutioner : Enemy
         return 10;
     }
 
-    public int damageDebuff()
+    public override int damageDebuff()
     {
         return dmgDebuff;
     }
 
-    public int damageBuff()
+    public override int damageBuff()
     {
         return dmgDebuff;
     }

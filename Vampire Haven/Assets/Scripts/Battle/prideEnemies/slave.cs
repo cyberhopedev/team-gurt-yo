@@ -103,12 +103,12 @@ public class slave : Enemy
         return 0;
     }
 
-    public int damageDebuff()
+    public override int damageDebuff()
     {
         return dmgDebuff;
     }
 
-    public int damageBuff()
+    public override int damageBuff()
     {
         return dmgDebuff;
     }

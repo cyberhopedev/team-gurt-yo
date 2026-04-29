@@ -110,12 +110,12 @@ public class natureAnamaly : Enemy
         return attackPower;
     }
 
-    public int armorReduction()
+    public override int armorReduction()
     {
         return armorDebuff;
     }
 
-    public int armorAddition()
+    public override int armorAddition()
     {
         return armorBuff;
     }

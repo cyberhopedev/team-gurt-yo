@@ -71,12 +71,12 @@ public class goblins : Enemy
         return currentHP <= 0;
     }
 
-    public int goldGive()
+    public override int goldGive()
     {
         return goldBuff;
     }
 
-    public int goldSteal()
+    public override int goldSteal()
     {
         return goldDebuff;
     }

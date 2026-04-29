@@ -8,7 +8,7 @@ public class PersistentEventSystem : MonoBehaviour
     private void Start()
     {
         // Destroy any duplicate EventSystems in the loaded scene
-        EventSystem[] systems = FindObjectsByType<EventSystem>(FindObjectsSortMode.None);
+        EventSystem[] systems = FindObjectsByType<EventSystem>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         if (systems.Length > 1)
         {
             foreach (EventSystem system in systems)

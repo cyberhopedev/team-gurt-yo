@@ -93,22 +93,22 @@ public class mysteriousEntity : Enemy
         return currentHP <= 0;
     }
 
-    public int armorReduction()
+    public override int armorReduction()
     {
         return armorDebuff;
     }
 
-    public int armorAddition()
+    public override int armorAddition()
     {
         return armorBuff;
     }
 
-    public int damageBuff()
+    public override int damageBuff()
     {
         return dmgBuff;
     }
 
-    public int damageDebuff()
+    public override int damageDebuff()
     {
         return dmgDebuff;
     }

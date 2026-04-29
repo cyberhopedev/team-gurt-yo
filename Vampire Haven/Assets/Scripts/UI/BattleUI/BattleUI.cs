@@ -46,7 +46,6 @@ public class BattleUI : MonoBehaviour
 
         // Initialize UI
         UpdateHealthBars();
-        UpdateStateText();
     }
 
     private void Update()
@@ -57,9 +56,8 @@ public class BattleUI : MonoBehaviour
             return;
         }
 
-        // Update UI every frame (simple for now for alpha)
+        // Update UI every frame
         UpdateHealthBars();
-        UpdateStateText();
 
         // Disable buttons when it's not player's turn
         attackButton.interactable = (battleManager.currentState == BattleState.PLAYERTURN);
@@ -92,26 +90,4 @@ public class BattleUI : MonoBehaviour
         enemyHealthBar.maxValue = enemy.maxHP;
         enemyHealthBar.value = enemy.currentHP;
     }
-
-    private void UpdateStateText()
-    {
-        switch (battleManager.currentState)
-        {
-            case BattleState.PLAYERTURN:
-                stateText.text = "Player Turn";
-                break;
-            case BattleState.ENEMYTURN:
-                stateText.text = "Enemy Turn";
-                break;
-            case BattleState.WON:
-                stateText.text = "You Win!";
-                break;
-            case BattleState.LOST:
-                stateText.text = "You Lose!";
-                break;
-            default:
-                stateText.text = "";
-                break;
-        }
-    }   
 }   
