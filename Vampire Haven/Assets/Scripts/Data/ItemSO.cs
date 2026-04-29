@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /// into various items
 /// </summary>
 [CreateAssetMenu(fileName = "New Item")]
-public class ItemSO : MonoBehaviour
+public class ItemSO : ScriptableObject
 {
     public string itemName;
     [TextArea] public string itemDescription;
