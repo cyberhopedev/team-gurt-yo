@@ -37,8 +37,8 @@ public class TitleScreenUI : MonoBehaviour
     /// more room, otherwise it prompts the user to set a name for the save.
     /// </summary>
     public void OnNewGameButton()
-    {
-        // TODO: Add slot functionality later, just looad into the game for now
+    {   // Will be used when class selection scene is added
+        // SceneManager.LoadScene("ClassSelectScene")
         SaveManager.Instance.NewGame(0, "Alpha Save");
     }
 
