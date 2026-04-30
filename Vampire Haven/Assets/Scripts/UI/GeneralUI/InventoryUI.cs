@@ -166,4 +166,13 @@ public class InventoryUI : MonoBehaviour
         // Do an initial refresh in case items were already loaded (e.g. continue game)
         Refresh();
     }
+    
+    /// <summary>
+    /// Runs whenever this GameObject becomes active, basically when the player
+    /// switches to the Inventory tab
+    /// </summary>
+    private void OnEnable()
+    {
+        Refresh();
+    }
 }

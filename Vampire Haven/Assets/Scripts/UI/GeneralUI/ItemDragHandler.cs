@@ -68,7 +68,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         Item originalSlot = dropSlot.currentItem;
         dropSlot.SetItem(_sourceSlot.currentItem);
 
-        if (dropSlot != null)
+        if(dropSlot != null)
         {
             _sourceSlot.SetItem(originalSlot);
         }
@@ -76,5 +76,6 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         {
             _sourceSlot.ClearItem();
         }
+        InventoryManager.Instance.SwapSlots(_sourceSlot.slotIndex, dropSlot.slotIndex);
     }
 }
