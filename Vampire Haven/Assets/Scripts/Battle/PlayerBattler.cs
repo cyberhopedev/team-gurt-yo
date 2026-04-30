@@ -18,7 +18,11 @@ public class PlayerBattler : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        currentHP += armor -= dmg;
+        // Armor absorbs damage first, THEN take damage
+        int absorbed = Mathf.Min(armor, dmg);
+        armor -= absorbed;
+        dmg -= absorbed;
+        currentHP = Mathf.Max(0, currentHP - dmg);
     }
 
     public void giveDamage(int addDmg)
