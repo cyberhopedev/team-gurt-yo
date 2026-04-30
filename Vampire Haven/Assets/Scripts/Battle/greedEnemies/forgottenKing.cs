@@ -82,7 +82,7 @@ public class forgottenKing : Enemy
 
     public int regret()
     {
-        intentFlee = true;
+        goldToDps = true;
         return 0;
     }
 

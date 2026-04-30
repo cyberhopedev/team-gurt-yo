@@ -18,6 +18,7 @@ public class ItemDictionary : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            transform.SetParent(null);
             Destroy(gameObject);
             return;
         }
