@@ -20,8 +20,18 @@ public class PlayerData : ScriptableObject
     // Persistent current HP, starts at max and is updated later
     public int currentHP = 100;
 
-    // Vampirism
-    // public VampirismLevel vampirismLevel = VampirismLevel.None;
+    [Header("Class & Progression")]
+    public PlayerClass playerClass = PlayerClass.Fighter; // default starter
+
+    // Regular level with XP, current scale for needed XP is NextLevel = CurrentLevel * 100
+    public int level = 1;
+    public int xp    = 0;
+
+    // Current amount of vitae
+    [Header("Vitae and Vampirism Level")]
+    public int vitae    = 0;     // current resource
+    public int maxVitae = 100;
+    // vampirismLevel    = VampirismLevel.None;
 
     /// <summary>
     /// Resets all fields back to default values.
@@ -37,7 +47,6 @@ public class PlayerData : ScriptableObject
         armor             = 0;
         gold              = 0;
         speedStat         = 5;
-        // vampirismLevel    = VampirismLevel.None;
     }
 
 }

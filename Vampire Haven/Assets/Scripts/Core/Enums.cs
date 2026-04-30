@@ -17,3 +17,6 @@ public enum AbilityType
     Swipe,    // Fighter — hit enemy for half damage (AOE concept simplified to single-target)
 }
 
+// Starter player classes
+public enum PlayerClass { Tank, Rogue, Archer, Fighter }
+

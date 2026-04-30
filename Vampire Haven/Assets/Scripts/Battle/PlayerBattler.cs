@@ -59,4 +59,28 @@ public class PlayerBattler : MonoBehaviour
     {
         playerDmg -= dmgRed;
     }
+
+    /// <summary>
+    /// Adds XP to the player and levels them up if they cross the threshold.
+    /// Called by BattleManager after a victory.
+    /// </summary>
+    public void AwardXP(int amount)
+    {
+        data.xp += amount;
+
+        // While instead of if so a single huge XP grant can level twice.
+        while (data.xp >= data.level * 100)
+        {
+            data.xp -= data.level * 100;
+            data.level++;
+
+            // Stat growth on level up. Tweak per class once class-specific
+            // growth is implemented (Tank gets more HP, Rogue more attack, etc.)
+            data.maxHP       += 5;
+            data.attackDamage += 1;
+            data.currentHP    = data.maxHP;  // full heal on level up — common JRPG convention
+
+            Debug.Log($"Level up! Now level {data.level}");
+        }
+    }
 }
