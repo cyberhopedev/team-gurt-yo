@@ -140,4 +140,20 @@ public class InventoryManager : MonoBehaviour
  
         InventoryUI.Instance?.Refresh();
     }    
+
+    /// <summary>
+    /// Swaps two slots in the items list. Used by ItemDragHandler after a
+    /// successful drop so save files reflect the new visual order
+    /// </summary>
+    public void SwapSlots(int aIdx, int bIdx)
+    {
+        // Pad the list out with nulls if either index is past the current end
+        while (items.Count <= Mathf.Max(aIdx, bIdx))
+        {
+            items.Add(null);   
+        }
+        Item tmp     = items[aIdx];
+        items[aIdx]  = items[bIdx];
+        items[bIdx]  = tmp;
+    }
 }

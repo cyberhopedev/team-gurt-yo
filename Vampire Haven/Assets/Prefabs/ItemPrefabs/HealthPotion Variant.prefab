@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 6767474617931673295, guid: 229d14a20bc0e38479b2cc5be9ff2ea9, type: 3}
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: goldCost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: itemName
+      value: Health Potion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: healPercent
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: itemDescription
+      value: Restores 25% of max HP
+      objectReference: {fileID: 0}
     - target: {fileID: 1464871401419874103, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -95,6 +115,10 @@ PrefabInstance:
     - target: {fileID: 4865632904991320632, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825497347210377725, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: m_Name
+      value: HealthPotion Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: goldCost
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: itemName
+      value: Sulfur-Infused Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: itemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: attackBonus
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445994584089569199, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: itemDescription
+      value: +3 Attack bonus
+      objectReference: {fileID: 0}
     - target: {fileID: 1464871401419874103, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -95,6 +115,10 @@ PrefabInstance:
     - target: {fileID: 4865632904991320632, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825497347210377725, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: m_Name
+      value: SulfurInfusedRing Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

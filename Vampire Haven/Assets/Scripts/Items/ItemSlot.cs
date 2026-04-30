@@ -14,6 +14,10 @@ public class ItemSlot : MonoBehaviour
  
     // The ItemSO currently displayed in this slot (null if empty)
     public Item currentItem { get; private set; }
+
+    // Slot index assigned by InventoryUI.BuildSlotUI
+    [HideInInspector] 
+    public int slotIndex = -1;
      
     /// <summary>
     /// Populates this slot with an item's icon and name.

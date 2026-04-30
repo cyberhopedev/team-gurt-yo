@@ -25,7 +25,7 @@ public class InventoryUI : MonoBehaviour
     private bool       _isOpen = false;
     private List<ItemSlot> _slots  = new List<ItemSlot>();
 
-        private void Awake()
+    private void Awake()
     {
         Instance = this;
  
@@ -155,6 +155,7 @@ public class InventoryUI : MonoBehaviour
             ItemSlot slot = slotGO.GetComponent<ItemSlot>();
             if (slot != null)
             {
+                slot.slotIndex = i;   // remember which logical slot this widget represents
                 _slots.Add(slot);
             }
             else
