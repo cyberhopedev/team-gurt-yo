@@ -78,11 +78,11 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual int armorAddition()
     {
-        return armorDebuff;
+        return armorBuff;
     }
 
     public virtual int damageBuff()
     {
-        return dmgDebuff;
+        return dmgBuff;
     }
 }
