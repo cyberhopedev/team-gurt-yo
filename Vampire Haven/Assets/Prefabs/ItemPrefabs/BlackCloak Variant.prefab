@@ -12,6 +12,30 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 714079092698164593, guid: 224fec30ade8bb2418f12403c98204bf, type: 3}
+    - target: {fileID: 2064440153928038247, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: goldCost
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064440153928038247, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: itemName
+      value: Black Cloak
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064440153928038247, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: defenseBonus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064440153928038247, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: itemDescription
+      value: 'Raise defense by 3 (or block gain by a flat 3)
+
+
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064440153928038247, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
+      propertyPath: defenseBuffAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4292132828100179130, guid: 4d1321fd1428ac245aba628d5be17b35, type: 3}
       propertyPath: m_Name
       value: BlackCloak Variant

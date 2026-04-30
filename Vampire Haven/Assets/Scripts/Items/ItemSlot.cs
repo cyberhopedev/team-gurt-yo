@@ -13,12 +13,12 @@ public class ItemSlot : MonoBehaviour
     public TextMeshProUGUI itemNameText;
  
     // The ItemSO currently displayed in this slot (null if empty)
-    public ItemSO currentItem { get; private set; }
+    public Item currentItem { get; private set; }
      
     /// <summary>
     /// Populates this slot with an item's icon and name.
     /// </summary>
-    public void SetItem(ItemSO item)
+    public void SetItem(Item item)
     {
         currentItem = item;
  

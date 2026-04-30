@@ -20,7 +20,7 @@ public class InventoryManager : MonoBehaviour
     // List of items in the inventory, used for saving and loading the inventory state.
     
     [HideInInspector] 
-    public List<ItemSO> items = new List<ItemSO>();
+    public List<Item> items = new List<Item>();
     
     void Awake()
     {
@@ -42,7 +42,7 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     /// <param name="item">The item being added</param>
     /// <returns>True if there was room in the inventory, false if otherwise</returns>
-    public bool AddItem(ItemSO item)
+    public bool AddItem(Item item)
     {
         if(item == null)
         {
@@ -128,7 +128,7 @@ public class InventoryManager : MonoBehaviour
  
         foreach (InventorySaveData data in savedItems)
         {
-            ItemSO item = itemDictionary != null
+            Item item = itemDictionary != null
                 ? itemDictionary.GetItemByID(data.itemID)
                 : null;
  

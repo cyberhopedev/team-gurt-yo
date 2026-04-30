@@ -11,8 +11,8 @@ public class ItemDictionary : MonoBehaviour
     public static ItemDictionary Instance { get; private set; }
 
     [Tooltip("Drag every ItemSO asset (potions, weapons, key items) here.")]
-    public List<ItemSO> allItems;
-    private Dictionary<string, ItemSO> _itemDictionary;
+    public List<Item> allItems;
+    private Dictionary<string, Item> _itemDictionary;
 
     public void Awake()
     {
@@ -23,8 +23,8 @@ public class ItemDictionary : MonoBehaviour
         }
         Instance = this;
 
-        _itemDictionary = new Dictionary<string, ItemSO>();
-        foreach(ItemSO item in allItems)
+        _itemDictionary = new Dictionary<string, Item>();
+        foreach(Item item in allItems)
         {
             if (item != null && !_itemDictionary.ContainsKey(item.itemName))
             {
@@ -37,13 +37,13 @@ public class ItemDictionary : MonoBehaviour
         }
     }
 
-    public ItemSO GetItemByID(string itemName)
+    public Item GetItemByID(string itemName)
     {
         if (string.IsNullOrEmpty(itemName))
         {
             return null;
         }
-        _itemDictionary.TryGetValue(itemName, out ItemSO item);
+        _itemDictionary.TryGetValue(itemName, out Item item);
         if(item == null)
         {
             Debug.LogWarning($"ItemDictionary: '{itemName}' not registered.");

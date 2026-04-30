@@ -65,7 +65,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             return;
         }
 
-        ItemSO originalSlot = dropSlot.currentItem;
+        Item originalSlot = dropSlot.currentItem;
         dropSlot.SetItem(_sourceSlot.currentItem);
 
         if (dropSlot != null)
