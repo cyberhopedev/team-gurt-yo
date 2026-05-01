@@ -48,12 +48,6 @@ public class SaveManager : MonoBehaviour
         Debug.Log($"Starting new game in slot {slot} as '{gameName}'...");
 
         // Reset all player stats so a previous run doesn't bleed into this one.
-        // playerData.maxHP        = 100;
-        // playerData.currentHP    = 100;
-        // playerData.attackDamage = 10;
-        // playerData.armor        = 0;
-        // playerData.gold         = 0;
-        // playerData.speedStat    = 5;
         playerData.ResetToDefaults();
 
         // Clear defeated enemies so all overworld enemies reappear

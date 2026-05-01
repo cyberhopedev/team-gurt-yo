@@ -39,7 +39,7 @@ public class TitleScreenUI : MonoBehaviour
     public void OnNewGameButton()
     {   // Will be used when class selection scene is added
         // SceneManager.LoadScene("ClassSelectScene")
-        SaveManager.Instance.NewGame(0, "Alpha Save");
+        SceneManager.LoadScene("ClassSelectScene");
     }
 
     /// <summary>

@@ -44,6 +44,7 @@ public class ClassSelectUI : MonoBehaviour
                 break;
         }
         playerData.currentHP = playerData.maxHP;
+        SaveManager.Instance.NewGame(0, "Save-001");
         SceneManager.LoadScene(nextScene);
     }
 
