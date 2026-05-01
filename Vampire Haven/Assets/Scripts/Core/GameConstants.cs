@@ -28,6 +28,6 @@ public static class GameConstants {
     /// </summary>
     public static class Inventory
     {
-        public const int MAX_SLOTS = 12;
+        public const int MAX_SLOTS = 36;
     }
 }
