@@ -29,6 +29,10 @@ public class BattleManager : MonoBehaviour
     [Tooltip("Where in the scene to spawn the encountered enemy.")]
     public Transform enemySpawnPoint;
 
+    [Header("Rewards")]
+    [Tooltip("Base XP awarded for any victory. Enemy classes can override this if we add an enemy.xpReward field.")]
+    public int baseXPReward = 25;
+
     /// <summary>
     /// Starts the battle and recognizes it as a start state
     /// </summary>
