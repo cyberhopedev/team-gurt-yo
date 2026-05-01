@@ -132,7 +132,6 @@ public class SwipeAbility : Ability
     }
 }
 
-
 // VAMPIRE ABILITIES
 
 /// <summary>

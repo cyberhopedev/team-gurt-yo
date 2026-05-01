@@ -22,11 +22,43 @@ public class BattleManager : MonoBehaviour
     public PlayerBattler player;
     public Enemy enemy;
 
+    [Header("Encounter Resolution")]
+    [Tooltip("All enemy prefabs that can be spawned in the BattleScene. Order doesn't matter.")]
+    public Enemy[] enemyPrefabs;
+
+    [Tooltip("Where in the scene to spawn the encountered enemy.")]
+    public Transform enemySpawnPoint;
+
     /// <summary>
     /// Starts the battle and recognizes it as a start state
     /// </summary>
     private void Start()
     {
+        string idToFight = CurrentBattle.enemyID;
+        // Search through the prefab list
+        if (!string.IsNullOrEmpty(idToFight) && enemyPrefabs != null)
+        {
+            foreach (Enemy prefab in enemyPrefabs)
+            {
+                if (prefab != null && prefab.enemyID == idToFight)
+                {
+                    // Instantiate gives us a runtime copy of the prefab so we don't
+                    // mutate the asset on disk.
+                    enemy = Instantiate(prefab, enemySpawnPoint.position, Quaternion.identity);
+                    break;
+                }
+            }
+        }
+
+        // Null check
+        if (enemy == null)
+        {
+            Debug.LogError($"BattleManager could not find enemy '{idToFight}'");
+            SceneManager.LoadScene(overworldScene);
+            return;
+        }
+
+        Instance = this;
         currentState = BattleState.START;
         StartBattle();
     }
@@ -153,21 +185,21 @@ public class BattleManager : MonoBehaviour
         if (currentState == BattleState.WON)
         {
             Debug.Log("You won!");
-            // TODO - Add feedback/impacts for winning
+            player.data.gold     += enemy.goldGive();   // base goldBuff payout
+            player.AwardXP(baseXPReward);   
+            SceneManager.LoadScene(overworldScene);  
         }
         else if (currentState == BattleState.LOST)
         {
             Debug.Log("You lost...");
-            // TODO - Add feedback/impacts for losing
+            SaveManager.Instance.LoadLastSave();
         }
-
-        SceneManager.LoadScene(overworldScene);
     }
 
     /// <summary>
     /// Allows use of abilities related to vitae
     /// </summary>
-    /// <param name="ability"></param>
+    /// <param name="ability">The ability to be used</param>
     public void UseAbility(Ability ability)
     {
         if (currentState != BattleState.PLAYERTURN)
