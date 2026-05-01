@@ -37,7 +37,7 @@ public class PauseScreenUI : MonoBehaviour
         }
 
         // Esc toggles the whole menu. Closing the menu = "resume".
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame)
         {
             Toggle();
         }
