@@ -84,6 +84,13 @@ public class BattleManager : MonoBehaviour
     void PlayerTurn()
     {
         Debug.Log("Player Turn");
+        player.TickStatuses();
+        if (player.IsDead())
+        {
+            currentState = BattleState.LOST;
+            EndBattle();
+            return;
+        }
     }
 
     /// <summary>
@@ -97,8 +104,17 @@ public class BattleManager : MonoBehaviour
         {
             return;
         }
-        // BETA VERSION OF ATTACKING
-        int damage = player.data.attackDamage;;
+        // Get the damage and check for statuses before attacking
+        int damage = player.data.attackDamage;
+        for (int i = enemy.activeStatuses.Count - 1; i >= 0; i--)
+        {
+            if (enemy.activeStatuses[i].type == StatusType.Marked)
+            {
+                damage = Mathf.RoundToInt(damage * enemy.activeStatuses[i].magnitude / 100f);
+                enemy.activeStatuses.RemoveAt(i);
+                break;   // only one Marked stack consumed per attack
+            }
+        }
         enemy.TakeDamage(damage);
         Debug.Log("Player attacks for " + damage);
 
@@ -126,9 +142,20 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("Player escaped!");
-        currentState = BattleState.ESCAPED;
-        SceneManager.LoadScene(overworldScene);
+        // Updated speed consideration for escaping
+        if (player.data.speedStat > enemy.attackPower)   // proxy for "enemy speed" — replace if you add a dedicated field
+        {
+            Debug.Log("Player escaped!");
+            currentState = BattleState.ESCAPED;
+            SceneManager.LoadScene(overworldScene);
+        }
+        else
+        {
+            // Failed escape gives the enemy a free turn — design doc penalty.
+            Debug.Log("Escape failed!");
+            currentState = BattleState.ENEMYTURN;
+            EnemyTurn();
+        }
     }
 
     /// <summary>
@@ -138,8 +165,24 @@ public class BattleManager : MonoBehaviour
     {
 
         Debug.Log("Enemy Turn");
+        enemy.TickStatuses();
+        if (enemy.IsDead())
+        {
+            EnemyTracker.defeatedEnemies.Add(enemy.enemyID);
+            currentState = BattleState.WON;
+            EndBattle();
+            return;
+        }
         // Call enemy chooseAttack method to pick randomAttack and return dmg
         int damage = enemy.chooseAttack();
+        // Subtract any attack debuffs
+        foreach (StatusEffect s in enemy.activeStatuses)
+        {
+            if (s.type == StatusType.AttackDebuff)
+            {
+                damage = Mathf.Max(0, damage - s.magnitude);
+            }
+        }
         player.TakeDamage(damage);
 
         //Call all possible enemy status effects, (buffs to give player back stats after turn with debuff is over)

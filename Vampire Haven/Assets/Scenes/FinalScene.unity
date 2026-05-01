@@ -2734,18 +2734,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2078355489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95149d9a9e53b2d4a870d47f0726fa86, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a4aa3caeb8bb384d9db238adf1227f8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: GameRuntime::CharacterStatsPanelUI
-  playerData: {fileID: 11400000, guid: cbc79ac95c8c311469e00d7a99afe162, type: 2}
-  portraitImage: {fileID: 640424832}
-  classText: {fileID: 392189987}
-  levelText: {fileID: 538883344}
-  hpText: {fileID: 209134727}
-  attackText: {fileID: 1588712950}
-  defenseText: {fileID: 1573736606}
-  speedText: {fileID: 1383060818}
-  classPortraits: []
+  m_EditorClassIdentifier: GameRuntime::BattleUI
+  attackButton: {fileID: 0}
+  escapeButton: {fileID: 0}
+  playerHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 0}
+  stateText: {fileID: 0}
 --- !u!1 &2095575600
 GameObject:
   m_ObjectHideFlags: 0

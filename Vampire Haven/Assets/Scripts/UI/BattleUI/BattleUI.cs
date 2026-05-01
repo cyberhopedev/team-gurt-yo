@@ -6,20 +6,25 @@ using System.Collections.Generic;
 
 public class BattleUI : MonoBehaviour
 {
-    // Attack button(s), one for now
-    [Header("Buttons")]
-    public Button attackButton;
-    // Escape/flee/run button
-    public Button escapeButton;
+    [Header("Vitae")]
+    public Slider vitaeBar; 
+
+    [Header("Status Icons")]
+    public Transform playerStatusContainer;  // panel for status icon prefabs
+    public Transform enemyStatusContainer;
+    public GameObject statusIconPrefab;
+
+    [Header("Attacks")]
+    [Tooltip("Container that holds dynamically-created attack option buttons.")]
+    public GameObject attackListPanel;
+    public Transform attackButtonContainer;
+    public GameObject attackButtonPrefab;
+
 
     [Header("Health Bars")]
     public Slider playerHealthBar;
     // Health bar for enemy
     public Slider enemyHealthBar;
-
-    // State of the battle as text
-    [Header("Text")]
-    public TextMeshProUGUI stateText;
 
     // Actors needed
     private BattleManager battleManager;
@@ -41,8 +46,8 @@ public class BattleUI : MonoBehaviour
         enemy = battleManager.enemy;
 
         // Setup buttons
-        attackButton.onClick.AddListener(OnAttack);
-        escapeButton.onClick.AddListener(OnEscape);
+        // attackButton.onClick.AddListener(OnAttack);
+        // escapeButton.onClick.AddListener(OnEscape);
 
         // Initialize UI
         UpdateHealthBars();
@@ -59,9 +64,9 @@ public class BattleUI : MonoBehaviour
         // Update UI every frame
         UpdateHealthBars();
 
-        // Disable buttons when it's not player's turn
-        attackButton.interactable = (battleManager.currentState == BattleState.PLAYERTURN);
-        escapeButton.interactable = (battleManager.currentState == BattleState.PLAYERTURN);
+        // // Disable buttons when it's not player's turn
+        // attackButton.interactable = (battleManager.currentState == BattleState.PLAYERTURN);
+        // escapeButton.interactable = (battleManager.currentState == BattleState.PLAYERTURN);
     }
 
     /// <summary>
@@ -74,7 +79,14 @@ public class BattleUI : MonoBehaviour
 
     private void OnAttack()
     {
+        // Open the attack list and rebuild it from the player's unlocked abilities
         battleManager.Attack();
+        if (attackListPanel == null) { 
+            battleManager.Attack(); 
+            return; 
+        }
+         attackListPanel.SetActive(true);
+        BuildAttackList();
     }
 
     public void OnEscape()
@@ -89,5 +101,61 @@ public class BattleUI : MonoBehaviour
 
         enemyHealthBar.maxValue = enemy.maxHP;
         enemyHealthBar.value = enemy.currentHP;
+    }
+
+    /// <summary>
+    /// Called by BattleManager whenever a status effect is applied or removed.
+    /// Rebuilds the icon strip from scratch — simpler than tracking adds/removes,
+    /// and these lists are tiny (max ~5 statuses).
+    /// </summary>
+    public void RefreshStatusIcons()
+    {
+        // Clear old icons. Always destroy children before re-spawning to avoid
+        // leaving stale ones from the previous turn.
+        foreach (Transform t in playerStatusContainer)
+        {
+            Destroy(t.gameObject);
+        }
+        foreach (Transform t in enemyStatusContainer){
+            Destroy(t.gameObject);
+        }
+
+        // Spawn a small icon for each active status
+        foreach (StatusEffect s in player.activeStatuses)
+        {
+            Instantiate(statusIconPrefab, playerStatusContainer).GetComponent<UnityEngine.UI.Image>().sprite = s.icon;
+        }
+        foreach (StatusEffect s in enemy.activeStatuses)
+        {
+            Instantiate(statusIconPrefab, enemyStatusContainer).GetComponent<UnityEngine.UI.Image>().sprite = s.icon;
+        }
+    }
+
+    private void BuildAttackList()
+    {
+        foreach (Transform t in attackButtonContainer) Destroy(t.gameObject);
+
+        // Always include a basic attack option.
+        GameObject basic = Instantiate(attackButtonPrefab, attackButtonContainer);
+        basic.GetComponentInChildren<TextMeshProUGUI>().text = "Basic Attack";
+        basic.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            attackListPanel.SetActive(false);
+            battleManager.Attack();
+        });
+
+        // Then list every unlocked ability the player can afford right now.
+        foreach (Ability ab in player.data.unlockedAbilities)
+        {
+            GameObject btn = Instantiate(attackButtonPrefab, attackButtonContainer);
+            btn.GetComponentInChildren<TextMeshProUGUI>().text =
+                $"{ab.abilityName}  ({ab.vitaeCost} V)";
+            Ability captured = ab;       // closure capture
+            btn.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                attackListPanel.SetActive(false);
+                battleManager.UseAbility(captured);
+            });
+        }
     }
 }   
