@@ -33,6 +33,9 @@ public class PlayerData : ScriptableObject
     public int maxVitae = 100;
     // vampirismLevel    = VampirismLevel.None;
 
+    // List of the unlocked abilities
+    public List<Ability> unlockedAbilities = new List<Ability>();
+
     /// <summary>
     /// Resets all fields back to default values.
     /// Call on "New Game" so a previous run's data doesn't bleed in.
