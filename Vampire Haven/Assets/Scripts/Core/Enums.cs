@@ -20,3 +20,15 @@ public enum AbilityType
 // Starter player classes
 public enum PlayerClass { Tank, Rogue, Archer, Fighter }
 
+// Status effect types
+public enum StatusType
+{
+    Poison,
+    Bleed,
+    Marked,        // enemy takes +50% damage from next attack
+    Stunned,
+    Shielded,
+    Stealthed,     // player attacks twice next turn (Rogue Stealth)
+    AttackDebuff,  // target deals -% damage (Blood Vision uses this on enemy)
+}
+

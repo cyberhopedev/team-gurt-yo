@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerBattler : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class PlayerBattler : MonoBehaviour
     public int armor;
     public int gold;
     public int playerDmg;
+    // List of active status effects
+    public List<StatusEffect> activeStatuses = new List<StatusEffect>();
 
     private void Awake()
     {
@@ -81,6 +84,28 @@ public class PlayerBattler : MonoBehaviour
             data.currentHP    = data.maxHP;  // full heal on level up — common JRPG convention
 
             Debug.Log($"Level up! Now level {data.level}");
+        }
+    }
+
+    /// <summary>
+    /// Apply per-turn status effects (poison ticks, bleed ramp, etc.)
+    /// Call this at the start of each unit's turn from BattleManager.
+    /// </summary>
+    public void TickStatuses()
+    {
+        // Iterate backwards so we can RemoveAt safely — removing from the front
+        // shifts every later index down by one and breaks a forward loop.
+        for (int i = activeStatuses.Count - 1; i >= 0; i--)
+        {
+            StatusEffect s = activeStatuses[i];
+            switch (s.type)
+            {
+                case StatusType.Poison: TakeDamage(s.magnitude); break;
+                case StatusType.Bleed:  TakeDamage(s.magnitude); s.magnitude++; break; // bleed escalates
+                // Stunned, Marked, Shielded are checked elsewhere — no per-turn dmg
+            }
+            s.turnsRemaining--;
+            if (s.turnsRemaining <= 0) activeStatuses.RemoveAt(i);
         }
     }
 }

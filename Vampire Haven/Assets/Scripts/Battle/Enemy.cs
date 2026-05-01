@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public abstract class Enemy : MonoBehaviour
     public bool goldToDps = false;
 
 
-    //will have more status effects as more enemies implemented
+    // List of active status effects
+    public List<StatusEffect> activeStatuses = new List<StatusEffect>();
 
     protected virtual void Start()
     {
@@ -84,5 +86,27 @@ public abstract class Enemy : MonoBehaviour
     public virtual int damageBuff()
     {
         return dmgBuff;
+    }
+
+    /// <summary>
+    /// Apply per-turn status effects (poison ticks, bleed ramp, etc.)
+    /// Call this at the start of each unit's turn from BattleManager.
+    /// </summary>
+    public void TickStatuses()
+    {
+        // Iterate backwards so we can RemoveAt safely — removing from the front
+        // shifts every later index down by one and breaks a forward loop.
+        for (int i = activeStatuses.Count - 1; i >= 0; i--)
+        {
+            StatusEffect s = activeStatuses[i];
+            switch (s.type)
+            {
+                case StatusType.Poison: TakeDamage(s.magnitude); break;
+                case StatusType.Bleed:  TakeDamage(s.magnitude); s.magnitude++; break; // bleed escalates
+                // Stunned, Marked, Shielded are checked elsewhere — no per-turn dmg
+            }
+            s.turnsRemaining--;
+            if (s.turnsRemaining <= 0) activeStatuses.RemoveAt(i);
+        }
     }
 }

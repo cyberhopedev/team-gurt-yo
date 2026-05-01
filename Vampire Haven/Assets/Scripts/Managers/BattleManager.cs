@@ -163,4 +163,32 @@ public class BattleManager : MonoBehaviour
 
         SceneManager.LoadScene(overworldScene);
     }
+
+    /// <summary>
+    /// Allows use of abilities related to vitae
+    /// </summary>
+    /// <param name="ability"></param>
+    public void UseAbility(Ability ability)
+    {
+        if (currentState != BattleState.PLAYERTURN)
+        {
+            return;
+        }
+        if (player.data.vitae < ability.vitaeCost) { 
+            Debug.Log("Not enough Vitae"); 
+            return; 
+        }
+        player.data.vitae -= ability.vitaeCost;
+        int dmg = ability.Execute(player, enemy);
+
+        if (enemy.IsDead())
+        {
+            EnemyTracker.defeatedEnemies.Add(enemy.enemyID);
+            currentState = BattleState.WON;
+            EndBattle();
+            return;
+        }
+        currentState = BattleState.ENEMYTURN;
+        EnemyTurn();
+    }
 }
